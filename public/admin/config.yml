@@ -6,6 +6,8 @@ backend:
   name: github
   repo: 16amanshivhare-creator/ksd
   branch: main
+  base_url: https://sveltia-cms-auth.16amanshivhare.workers.dev
+  auth_endpoint: auth
   auth_scope: repo
   open_authoring: false
   commit_messages:
