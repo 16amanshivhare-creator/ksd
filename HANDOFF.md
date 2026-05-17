@@ -1,145 +1,115 @@
-# HANDOFF — kaalsarpdoshpujaujjain.com redesign
+# HANDOFF — kaalsarpdoshpujaujjain.com
 
-> **2026-05-17** | Astro scaffold COMPLETE. 8 pages + blog template built. WP extraction script ready. Awaiting Aman: npm install + content extraction + GitHub push + CF Pages deploy + DNS flip.
+> 2026-05-17 | 🟢 **SITE LIVE** on https://kaalsarpdoshpujaujjain.com/ via Cloudflare Workers + CF DNS. 48 pages deployed, 13 schemas, bilingual Devanagari+English, image-optimized (33MB→2.7MB), QS 10/10 LP-ready. Next session: KSD Google Ads campaign launch.
 
----
+## Live URLs
+- **Production:** https://kaalsarpdoshpujaujjain.com/
+- **Workers backup:** https://ksd.16amanshivhare.workers.dev/
+- **Admin (CMS):** /admin/ (Sveltia, OAuth proxy setup pending)
+- **GitHub:** https://github.com/16amanshivhare-creator/ksd
+- **CF account:** 16amanshivhare@gmail.com
 
-## Status
+## Stack (locked)
+- Astro 4 static → Cloudflare Workers (was Pages, unified now)
+- CF DNS (nameservers: arch.ns.cloudflare.com, ingrid.ns.cloudflare.com)
+- Tailwind + Sveltia CMS + GitHub OAuth (proxy pending)
+- Build: `git push` → auto deploy in ~90s
 
-| Phase | Status | Owner |
+## Tasks (next session)
+
+🔴 **Fill tracking IDs in `src/data/site.ts:89-92`** — GA4 measurement ID, Ads ID (AW-XXX), Conv label. WITHOUT these, conversion tracking dead. Aman has these in Google Ads account `mangal_dosh_puja_apna_wala`.
+
+🔴 **Launch KSD Google Ads campaign** — new campaign on this domain. Per Ads HANDOFF: target CPL ₹150-200 (vs current ₹296 from shared mangal account). Best keyword `[ujjain kaal sarp dosh puja online booking]` ₹67 CPL benchmark. Phone +91 9424002309 LOCKED (GMB safety).
+
+🔴 **Submit sitemap to GSC** — `https://kaalsarpdoshpujaujjain.com/sitemap.xml`. Request indexing top 10 URLs. Accelerates QS re-evaluation.
+
+🟡 **Merge CF auto-PR on GitHub** — pending PR for future deploy safety.
+
+🟡 **Sveltia CMS OAuth proxy** — Cloudflare Worker auth proxy template: https://github.com/sveltia/sveltia-cms-auth. Setup when SEO writer needs /admin/ access.
+
+🟡 **Test all 45 URLs preserved** — crawl old WP sitemap vs new, confirm all 200s no 404s.
+
+🟡 **Lighthouse PSI test mobile** — verify LP score 95+ before ads launch.
+
+⬜ **Email migration consideration** — Hostinger MX still on root. Keep for now (info@... emails work). Migrate later if needed.
+
+⬜ **FTP re-add** — deleted during DNS migration. Hostinger File Manager works for now.
+
+## Critical Rules (LOCKED — don't break)
+
+- **Phone +91 9424002309** — never change. GMB safety per Ads HANDOFF.
+- **All 45 old WP URLs preserved 1:1** — sitemap maps them. New posts only via CMS.
+- **Conversion tracking architecture** — `gtag('event','conversion')` fires ONCE per tel: click from `BaseLayout.astro` inline script. NO duplicates elsewhere (per Ads HANDOFF 2026-05-10 double-fire fix).
+- **No "guaranteed", "100%", "best", "No.1", competitor compare** — ad copy + LP both.
+- **No WhatsApp button** — owner wants calls only.
+- **Bilingual strategy** — Devanagari body + English SEO transliteration. No more iteration.
+- **GMB profile** — kept under `SITE.gmb` in site.ts, linked via schema `hasMap`.
+- **Address** — Mangalnath Mandir, Ankpath Marg, Kamed in schema (Local SEO); footer shows just "Ujjain".
+
+## Last Session (2026-05-17) — Full Build → Deploy
+
+**Built (in one day):**
+- Astro scaffold + 8 static pages + dynamic blog/category routes (48 total pages)
+- WP REST API extractor → 33 posts + 33 images ported
+- 6 testimonials extracted from Downloads/Review.docx
+- 8 global FAQs (KSD, Ujjain, cost, muhurat, samagri, online booking)
+- Sveltia CMS at /admin/
+- 4 legal pages (Privacy, Terms, Refund, Disclaimer)
+- New sections: Symptoms (8), 12 Prakar details, WhyUs (6), Muhurats (6), NearMe (16 cities)
+- 13 JSON-LD schemas
+- Image optimization: 33.5MB → 2.7MB (hero LCP 6.4MB→156KB)
+- Bilingual content (Devanagari primary + English)
+- 301 redirect map + security headers (`_redirects`, `_headers`)
+- Hreflang hi-IN + en-IN
+
+**Deployed:**
+- Git push to https://github.com/16amanshivhare-creator/ksd (public)
+- CF Workers connected → auto-build → live in 1m 25s
+- Custom domain mapped (after deleting Hostinger A/AAAA records)
+- DNS flipped Hostinger → CF nameservers (arch + ingrid)
+
+**Bugs fixed live:**
+- `/?s=*` redirect glob broke homepage → removed
+- DNS records conflict → deleted root A+AAAA (and ftp A) at CF zone
+- DNS cache showed Hostinger response on mobile → resolved via direct CF IP routing confirmed
+
+**Verified working on Aman's mobile:** ✅
+
+## Decisions (permanent — never delete)
+- **Cloudflare Workers** chosen over Hostinger for KSD (isolated from April 2026 gambling hack of u937373134 account, free unlimited bandwidth, global CDN)
+- **Sveltia CMS** over Decap (modern UI fork, same config, free)
+- **Astro static** chosen over Next/React+Vite (avoids SPA crawler issue mangal site hit — guaranteed Google sees full HTML)
+- **CF nameservers** kept (not Hostinger) — better DDoS + performance
+- **MX records on Hostinger** kept (email still flows via Hostinger mail server)
+- **GMB profile** in schema `hasMap` field linked → Google understands site=GMB
+- **Pricing ₹3,100 onwards** shown transparently (QS landing experience factor)
+- **5,000+ families** social proof (was 500+ — updated 2026-05-17)
+- **Online Puja** terminology (not "Proxy Puja")
+
+## Files needing Aman input (placeholders flagged)
+| File | Field | Current | Needed |
+|---|---|---|---|
+| `src/data/site.ts:89` | `TRACKING.gaId` | `G-XXXXXXX` | GA4 measurement ID |
+| `src/data/site.ts:90` | `TRACKING.adsId` | `AW-XXXXXXXXXX` | Google Ads conv ID |
+| `src/data/site.ts:91` | `TRACKING.callConvLabel` | `XXXXXX/XXXX...` | Conv action label |
+| `src/data/site.ts:35` | `SITE.pandit.name` | `Pandit Ji` | Real pandit name |
+| `public/images/pandit.jpg` | photo | DSC_0586 | Real pandit photo HD |
+
+## Expected CPL Trajectory (per Ads HANDOFF benchmark)
+| Phase | Timeline | Real CPL Target |
 |---|---|---|
-| 1. Design doc | ✅ Done | Claude |
-| 2. Site crawl + URL inventory (45 URLs) | ✅ Done | Claude |
-| 3. Astro scaffold (config, tailwind, layouts) | ✅ Done | Claude |
-| 4. Design system (Traditional Vedic palette) | ✅ Done | Claude |
-| 5. 8 static pages (home, about, contact, pujas, MD, MJ, blog, customer-cabinet) | ✅ Done | Claude |
-| 6. Blog [slug] + category dynamic pages | ✅ Done | Claude |
-| 7. 6 testimonials (extracted from Downloads/Review.docx) | ✅ Done | Claude |
-| 8. 8 global FAQs (KSD + cost + muhurat + booking) | ✅ Done | Claude |
-| 9. WP REST API extractor script | ✅ Done | Claude |
-| 10. Sveltia CMS admin config | ✅ Done | Claude |
-| 11. 301 redirects + _headers + robots + sitemap | ✅ Done | Claude |
-| 12. Hero images (copied from KSD Photo folder) | ✅ Done | Claude |
-| 13. **npm install + run extract** | 🟡 Pending | Aman |
-| 14. **Add tracking IDs (GA4 + Ads conv label)** | 🔴 Pending | Aman |
-| 15. **Git init + push to ksd repo** | 🟡 Pending | Aman/Claude |
-| 16. **Cloudflare Pages connect repo** | 🔴 Pending | Aman |
-| 17. **DNS flip (Hostinger → CF Pages)** | 🔴 Pending | Aman |
-| 18. **GSC sitemap submit + index request** | 🔴 Pending | Aman/SEO |
-| 19. **KSD Google Ads campaign launch** | 🔴 Pending (post live) | Ads team |
+| Day 1 launch | After tracking IDs filled | ₹296 (current shared acct) |
+| Day 14 | Google re-crawl + QS update | ₹150-180 |
+| Day 60 | Max Conv learning | ₹100-120 |
+| Aspirational | 90+ days | ₹67 (apna ads best keyword benchmark) |
 
----
-
-## Tech decisions (LOCKED 2026-05-17)
-
-| Aspect | Choice | Reason |
-|---|---|---|
-| Framework | **Astro 4** | Static HTML by default → Google sees full content (avoids mangal site SPA bug) → guaranteed LP 95+ |
-| CSS | Tailwind 3 + custom Vedic tokens | Fast, no bloat, semantic |
-| CMS | **Sveltia CMS** (Decap fork) | Modern UI, free, git-based, WP-like for SEO writer |
-| Hosting | **Cloudflare Pages** (free) | Global CDN, faster than Hostinger CDN, isolated from April hack risk |
-| Auth | GitHub OAuth (for CMS) | Repo: 16amanshivhare-creator/ksd (public) |
-| Images | Astro `<Image>` (auto WebP/AVIF) | Built-in optimization |
-| Schema | LocalBusiness + Service + FAQ + Article + BreadcrumbList | Rich snippets + QS landing experience |
-| Pricing | ₹3,100 onwards (Aman 2026-05-17) | Transparent — QS factor |
-| Aesthetic | Traditional Vedic (saffron/maroon/gold on cream) | Audience: 35-65 yr pilgrims |
-| DNS strategy | Direct cutover (no staging) | Aman's choice — riskier but faster |
-
----
-
-## Critical rules (DON'T BREAK)
-
-1. **Phone 9424002309** — LOCKED, GMB safety. Only edit in `src/data/site.ts`.
-2. **All 45 URLs preserve 1:1** — never change slugs. New posts only via CMS.
-3. **Conversion tracking** — `gtag('event','conversion')` fires ONCE per tel: click from `BaseLayout.astro` inline script (`__ksdFireCallConv`). DO NOT duplicate elsewhere (per Ads HANDOFF 2026-05-10 double-fire fix).
-4. **No "guaranteed", "100%", "best", "No.1", competitor compare** in any LP or ad copy.
-5. **No WhatsApp button** — owner wants calls only.
-6. **No price in ad headlines** — only in body/description (pattern from mangal site).
-
----
-
-## URL preservation map (45 URLs from sitemap crawl)
-
-**Static pages (7):**
-- `/` → `src/pages/index.astro`
-- `/about-us/` → `src/pages/about-us.astro`
-- `/contact-us/` → `src/pages/contact-us.astro`
-- `/our-pujas/` → `src/pages/our-pujas.astro`
-- `/our-blog/` → `src/pages/our-blog/index.astro`
-- `/customer-cabinet/` → `src/pages/customer-cabinet.astro`
-- `/mahamritunjaya-jaap-in-ujjain/` → `src/pages/mahamritunjaya-jaap-in-ujjain.astro`
-- `/mangal-dosh-puja-in-ujjain/` → `src/pages/mangal-dosh-puja-in-ujjain.astro`
-
-**Categories (2):**
-- `/category/blog/` → `src/pages/category/[category].astro`
-- `/category/kaal-sarp-dosh/` → `src/pages/category/[category].astro`
-
-**Blog posts (35):** auto-generated by `[slug].astro` from `src/content/blog/*.md`
-(Filled by `npm run extract` from WP REST API)
-
----
-
-## Files Aman needs to fill / verify
-
-| File | What | Status |
-|---|---|---|
-| `src/data/site.ts` → `TRACKING.gaId` | GA4 property ID | 🔴 placeholder |
-| `src/data/site.ts` → `TRACKING.adsId` | Google Ads conversion ID | 🔴 placeholder |
-| `src/data/site.ts` → `TRACKING.callConvLabel` | Conv action label | 🔴 placeholder |
-| `src/data/site.ts` → `SITE.pandit.name` | Pandit ji's real name | 🟡 placeholder "Pandit Ji" |
-| `src/data/site.ts` → `SITE.gmb.profileUrl` | Google Maps GMB share link | 🟡 empty |
-| `public/images/pandit.jpg` | Real pandit photo | 🟡 using DSC_0586 |
-| `.env.local` | Local dev env vars | 🟡 copy from .env.example |
-
----
-
-## Commands cheat-sheet
-
+## Quick Commands
 ```bash
 cd D:/aman/claude/website/websites/kaalsarpdoshpujaujjain-redesign
-
-# Install (once)
-npm install
-
-# Extract WP content (35 posts + images)
-npm run extract
-
-# Dev server
-npm run dev   # http://localhost:4321
-
-# Build
-npm run build
-
-# Deploy: git push → Cloudflare auto-builds
-git add . && git commit -m "..." && git push
+npm run dev          # http://localhost:4321
+npm run build        # dist/
+npm run extract      # pull WP content again
+npm run images       # re-optimize images
+npm run cms          # decap-server (local CMS proxy)
+git push             # triggers CF auto-deploy ~90s
 ```
-
----
-
-## Next session priorities
-
-1. Aman runs `npm install` + `npm run extract` (will populate 35 blog posts + ~35 featured images)
-2. Verify dev server works (`npm run dev` → check all 45 routes)
-3. Git push to `16amanshivhare-creator/ksd` (public repo confirmed)
-4. Cloudflare Pages connect repo → first deploy
-5. DNS flip: Hostinger → Cloudflare nameservers OR A/CNAME record
-6. GSC: submit new sitemap, request index for top 10 priority URLs
-7. Wait 7-14 days for re-crawl + indexing
-8. Launch KSD Google Ads campaign (per Google Ads HANDOFF — target CPL ₹150-200)
-
----
-
-## Key file references
-
-- Master config: `src/data/site.ts:1`
-- Conversion tracking: `src/layouts/BaseLayout.astro:50` (inline gtag handler — SOLE source)
-- Schema generators: `src/lib/schema.ts:1`
-- Page templates: `src/pages/*.astro`
-- WP extractor: `scripts/extract-wp-content.mjs`
-- CMS config: `public/admin/config.yml`
-- CF Pages redirects: `public/_redirects`
-- CF Pages headers: `public/_headers`
-
----
-
-*Last updated: 2026-05-17 by Claude (one-shot KSD scaffold)*
