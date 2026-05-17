@@ -1,0 +1,129 @@
+# Sveltia CMS / Decap CMS config — admin panel for KSD
+# Auth: GitHub OAuth (PAT setup) — SEO writer logs in via GitHub
+# Live URL: https://kaalsarpdoshpujaujjain.com/admin/
+
+backend:
+  name: github
+  repo: 16amanshivhare-creator/ksd
+  branch: main
+  auth_scope: repo
+  open_authoring: false
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload "{{path}}"'
+    deleteMedia: 'Delete "{{path}}"'
+
+publish_mode: editorial_workflow
+local_backend: true
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+site_url: https://kaalsarpdoshpujaujjain.com
+display_url: https://kaalsarpdoshpujaujjain.com
+logo_url: /favicon.svg
+
+locale: en
+
+collections:
+  - name: blog
+    label: 'Blog Posts'
+    label_singular: 'Post'
+    folder: src/content/blog
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    summary: '{{title}} — {{pubDate | date("DD MMM YYYY")}}'
+    sortable_fields: [pubDate, title]
+    view_filters:
+      - label: 'Kaal Sarp Dosh'
+        field: category
+        pattern: 'kaal-sarp-dosh'
+      - label: 'Drafts'
+        field: draft
+        pattern: true
+    fields:
+      - { name: title, label: 'Title (SEO ≤70 chars)', widget: string, hint: 'Include focus keyword' }
+      - { name: description, label: 'Meta description (120-170 chars)', widget: text, hint: 'Appears in Google SERP' }
+      - { name: focusKeyword, label: 'Focus Keyword', widget: string, hint: 'e.g. kaal sarp dosh puja ujjain' }
+      - { name: pubDate, label: 'Publish Date', widget: datetime, format: 'YYYY-MM-DD' }
+      - { name: updatedDate, label: 'Updated Date', widget: datetime, required: false }
+      - { name: image, label: 'Featured Image', widget: image, required: false }
+      - { name: imageAlt, label: 'Image alt text (SEO)', widget: string, required: false }
+      - name: category
+        label: 'Category'
+        widget: select
+        default: 'blog'
+        options:
+          - { label: 'Blog', value: 'blog' }
+          - { label: 'Kaal Sarp Dosh', value: 'kaal-sarp-dosh' }
+      - { name: tags, label: 'Tags', widget: list, default: [], required: false }
+      - name: language
+        label: 'Language'
+        widget: select
+        default: 'hi'
+        options:
+          - { label: 'Hindi', value: 'hi' }
+          - { label: 'English', value: 'en' }
+          - { label: 'Marathi', value: 'mr' }
+      - { name: author, label: 'Author', widget: string, default: 'Pandit Ji' }
+      - { name: featured, label: 'Featured?', widget: boolean, default: false }
+      - { name: draft, label: 'Draft (not published)', widget: boolean, default: false }
+      - name: faq
+        label: 'FAQ (auto-generates schema)'
+        widget: list
+        required: false
+        summary: '{{fields.q}}'
+        fields:
+          - { name: q, label: 'Question', widget: string }
+          - { name: a, label: 'Answer', widget: text }
+      - { name: body, label: 'Body (Markdown)', widget: markdown }
+
+  - name: testimonials
+    label: 'Customer Testimonials'
+    label_singular: 'Testimonial'
+    folder: src/content/testimonials
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: '{{slug}}'
+    sortable_fields: [date, rating]
+    summary: '{{name}}, {{city}} — {{rating}}★'
+    fields:
+      - { name: name, label: 'Customer name', widget: string }
+      - { name: city, label: 'City', widget: string }
+      - { name: rating, label: 'Rating (1-5)', widget: number, default: 5, min: 1, max: 5 }
+      - { name: quote, label: 'Review quote (20-500 chars)', widget: text }
+      - { name: pujaType, label: 'Puja type', widget: string, required: false }
+      - { name: date, label: 'Date', widget: datetime, format: 'YYYY-MM-DD' }
+
+  - name: faqs
+    label: 'Global FAQs (homepage + auto-assigned)'
+    label_singular: 'FAQ'
+    folder: src/content/faqs
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: '{{slug}}'
+    summary: '{{question}}'
+    fields:
+      - { name: question, label: 'Question', widget: string }
+      - { name: answer, label: 'Answer', widget: text }
+      - { name: tags, label: 'Tags', widget: list, default: [], required: false }
+
+  - name: pages
+    label: 'Static Pages (advanced — edit code directly recommended)'
+    files:
+      - name: site
+        label: 'Site Settings (phone, address, pricing, GMB)'
+        file: src/data/site.ts
+        format: yaml-frontmatter
+        editor: { preview: false }
+        fields:
+          - { name: body, label: 'TypeScript source', widget: code, hint: 'Edit phone, address, pricing here' }

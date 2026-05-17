@@ -1,0 +1,12 @@
+{
+  "name": "Kaal Sarp Dosh Puja Ujjain",
+  "short_name": "KSD Ujjain",
+  "description": "Authentic Vedic Kaal Sarp Dosh Puja at Mangalnath Mandir, Ujjain",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdf7e7",
+  "theme_color": "#a32933",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

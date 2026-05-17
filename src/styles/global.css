@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 192 55 64;
+    --color-accent: 240 93 5;
+    --color-gold: 192 136 7;
+    --color-cream: 253 247 231;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-cream-50 text-ink-800 font-body antialiased;
+    font-feature-settings: 'kern', 'liga', 'calt';
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-maroon-900;
+    text-wrap: balance;
+  }
+
+  h1 { @apply text-3xl md:text-4xl lg:text-5xl leading-tight font-bold; }
+  h2 { @apply text-2xl md:text-3xl leading-snug font-semibold; }
+  h3 { @apply text-xl md:text-2xl leading-snug font-semibold; }
+  h4 { @apply text-lg md:text-xl font-semibold; }
+
+  p { @apply leading-relaxed; text-wrap: pretty; }
+
+  a { @apply transition-colors; }
+
+  ::selection { @apply bg-saffron-200 text-maroon-900; }
+
+  img, svg, video { @apply max-w-full h-auto; }
+}
+
+@layer components {
+  .container-narrow { @apply max-w-3xl mx-auto px-4 sm:px-6; }
+  .container-wide { @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8; }
+
+  .btn-call {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5
+           bg-maroon-700 hover:bg-maroon-800 text-white font-semibold
+           rounded-lg shadow-cta hover:shadow-lg
+           transition-all duration-200
+           focus:outline-none focus:ring-4 focus:ring-maroon-300;
+  }
+
+  .btn-call-lg {
+    @apply btn-call text-lg px-8 py-4;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-5 py-3
+           border-2 border-maroon-700 text-maroon-800
+           hover:bg-maroon-700 hover:text-white
+           font-semibold rounded-lg transition-colors;
+  }
+
+  .badge-trust {
+    @apply inline-flex items-center gap-1.5 px-3 py-1
+           bg-gold-100 text-gold-900 text-sm font-semibold rounded-full
+           border border-gold-300;
+  }
+
+  .prose-vedic {
+    @apply prose prose-lg max-w-none
+           prose-headings:font-display prose-headings:text-maroon-900
+           prose-a:text-maroon-700 prose-a:no-underline hover:prose-a:underline
+           prose-strong:text-maroon-900
+           prose-blockquote:border-l-saffron-500 prose-blockquote:bg-saffron-50
+           prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r
+           prose-img:rounded-lg prose-img:shadow-soft;
+  }
+
+  .divider-om::before {
+    content: '॥ ॐ ॥';
+    @apply block text-center text-saffron-600 font-display text-2xl my-6 opacity-60;
+  }
+}
+
+/* Mobile sticky call bar offset for body */
+@media (max-width: 768px) {
+  body { padding-bottom: 68px; }
+}
+
+/* Print + perf hint */
+@media print {
+  .no-print { display: none !important; }
+}

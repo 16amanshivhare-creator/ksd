@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { SITE } from '@data/site';
+---
+
+<BaseLayout title="पृष्ठ नहीं मिला · 404" description="Yeh page nahi mila. Kripya home page par jaayein." noindex={true}>
+  <section class="py-24 bg-cream-50 text-center">
+    <div class="container-narrow">
+      <p class="font-display text-9xl text-saffron-300 leading-none">404</p>
+      <h1 class="mt-4">पृष्ठ नहीं मिला</h1>
+      <p class="text-ink-700 mt-3">जो पेज आप ढूँढ रहे हैं वो उपलब्ध नहीं है। शायद URL बदल गया हो।</p>
+      <div class="flex flex-wrap gap-3 justify-center mt-6">
+        <a href="/" class="btn-call">
+          <Icon name="mdi:home" class="w-5 h-5" /> होम पर जाएँ
+        </a>
+        <a href={SITE.phone.tel} class="btn-ghost">
+          <Icon name="mdi:phone" class="w-5 h-5" /> Call · {SITE.phone.display}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

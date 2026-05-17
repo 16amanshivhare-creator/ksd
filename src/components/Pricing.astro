@@ -1,0 +1,46 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE } from '@data/site';
+---
+
+<section class="py-16 bg-white">
+  <div class="container-wide max-w-4xl">
+    <header class="text-center mb-10">
+      <p class="badge-trust mb-3">पारदर्शी मूल्य</p>
+      <h2>काल सर्प दोष पूजा का खर्च</h2>
+      <p class="text-ink-600 mt-2">सब कुछ शामिल · कोई छुपा चार्ज नहीं</p>
+    </header>
+
+    <div class="border-2 border-gold-400 rounded-2xl overflow-hidden shadow-cta">
+      <div class="bg-gradient-to-r from-maroon-700 to-maroon-800 text-cream-50 p-6 text-center">
+        <p class="text-sm uppercase tracking-wider text-gold-300">शुरुआती मूल्य</p>
+        <p class="font-display text-5xl font-bold mt-1">₹{SITE.pricing.starting.toLocaleString('en-IN')}</p>
+        <p class="text-sm text-cream-200 mt-1">से शुरू · {SITE.pricing.note}</p>
+      </div>
+
+      <div class="p-6 sm:p-8 grid sm:grid-cols-2 gap-3 bg-cream-50">
+        {[
+          'वैदिक पंडित द्वारा संकल्प + पूजा',
+          'पूरी पूजा सामग्री (हवन, चांदी नाग-नागिन, फल, फूल)',
+          'मंत्र जाप + हवन + तर्पण',
+          'शुभ मुहूर्त निकालना',
+          'पूजा की वीडियो + प्रसाद',
+          'दान-दक्षिणा शामिल'
+        ].map((f) => (
+          <div class="flex items-start gap-2 text-sm">
+            <Icon name="mdi:check-decagram" class="w-5 h-5 text-saffron-600 shrink-0 mt-0.5" />
+            <span class="text-ink-800">{f}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-saffron-50 border-t border-gold-200 p-5 text-center">
+        <p class="text-sm text-ink-700 mb-3">कुंडली के अनुसार दोष का प्रकार और सटीक मूल्य पंडित जी से जानें</p>
+        <a href={SITE.phone.tel} data-source="pricing" class="btn-call">
+          <Icon name="mdi:phone" class="w-5 h-5" />
+          अभी कॉल करें · {SITE.phone.display}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

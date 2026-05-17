@@ -1,0 +1,100 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { SITE, PUJA_SERVICES, KAAL_SARP_TYPES } from '@data/site';
+import { breadcrumbSchema } from '@lib/schema';
+
+const title = 'Our Pujas — Kaal Sarp Dosh, Mangal Dosh, Mahamrityunjay Jaap Ujjain';
+const description = 'Ujjain Mangalnath Mandir ke pandit ji se sabhi prakar ki vedic pujayen — Kaal Sarp Dosh (12 prakar), Mangal Dosh, Mangal Bhat, Mahamrityunjay Jaap, Rudrabhishek. ₹3,100 se.';
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Our Pujas', url: '/our-pujas/' }
+])];
+
+const otherPujas = [
+  { titleHi: 'मंगल भात पूजा', title: 'Mangal Bhat Puja', desc: 'विवाह पूर्व मंगल दोष निवारण' },
+  { titleHi: 'रुद्राभिषेक', title: 'Rudrabhishek', desc: 'शिव कृपा · संकट निवारण' },
+  { titleHi: 'पित्र दोष पूजा', title: 'Pitra Dosh Puja', desc: 'पूर्वजों का तर्पण' },
+  { titleHi: 'नवग्रह शांति', title: 'Navagraha Shanti', desc: '9 ग्रहों का शांति यज्ञ' },
+  { titleHi: 'कुंडली मिलान', title: 'Kundli Milan', desc: 'विवाह से पूर्व मिलान' },
+  { titleHi: 'गुरु चांडाल दोष', title: 'Guru Chandal Dosh', desc: 'गुरु-राहु युति का उपाय' }
+];
+---
+
+<BaseLayout title={title} description={description} schemas={schemas}>
+  <section class="py-12 bg-gradient-to-br from-saffron-50 to-cream-100 border-b border-gold-200">
+    <div class="container-wide text-center">
+      <p class="badge-trust mb-3">सेवाएँ</p>
+      <h1>हमारी पूजाएँ — उज्जैन में वैदिक अनुष्ठान</h1>
+      <p class="text-lg text-ink-700 mt-3 max-w-2xl mx-auto">मंगलनाथ मंदिर के विद्वान पंडित द्वारा सम्पन्न — सभी पारदर्शी मूल्य, पूरी सामग्री शामिल।</p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container-wide">
+      <h2 class="text-center mb-10">मुख्य पूजाएँ</h2>
+      <div class="grid md:grid-cols-3 gap-5">
+        {PUJA_SERVICES.map((p) => (
+          <article class="bg-cream-50 border border-gold-200 rounded-xl p-6 shadow-soft hover:shadow-cta transition-shadow">
+            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-saffron-400 to-maroon-700 text-white text-2xl flex items-center justify-center mb-4">🕉️</div>
+            <h3 class="!text-maroon-900 !leading-tight">{p.titleHi}</h3>
+            <p class="text-xs text-ink-600">{p.title}</p>
+            <p class="text-sm text-ink-700 mt-3 leading-relaxed">{p.short}</p>
+            <div class="mt-4 flex items-center justify-between border-t border-gold-100 pt-3">
+              <span class="font-display font-bold text-maroon-800">₹{p.price.toLocaleString('en-IN')}+</span>
+              <a href={p.slug} class="text-saffron-700 font-semibold text-sm hover:text-maroon-800 inline-flex items-center gap-1">
+                विस्तार <Icon name="mdi:arrow-right" class="w-4 h-4" />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-cream-100">
+    <div class="container-wide">
+      <header class="text-center mb-8">
+        <h2>काल सर्प दोष के 12 प्रकार</h2>
+        <p class="text-ink-600 mt-2">कुंडली के अनुसार दोष का प्रकार पंडित जी बताएँगे</p>
+      </header>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {KAAL_SARP_TYPES.map((t) => (
+          <li class="flex items-center gap-3 bg-white border border-gold-200 rounded-lg px-4 py-3">
+            <span class="w-9 h-9 rounded-full bg-saffron-100 text-saffron-700 font-display font-bold flex items-center justify-center shrink-0">{t.id}</span>
+            <div class="leading-tight">
+              <p class="font-display font-semibold text-maroon-900">{t.nameHi}</p>
+              <p class="text-xs text-ink-600">{t.name}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container-wide">
+      <h2 class="text-center mb-10">अन्य पूजाएँ</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {otherPujas.map((p) => (
+          <div class="bg-cream-50 border border-gold-200 rounded-lg p-4">
+            <h3 class="text-base !text-maroon-800 !leading-tight">{p.titleHi}</h3>
+            <p class="text-xs text-ink-600">{p.title}</p>
+            <p class="text-sm text-ink-700 mt-2">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gradient-to-br from-maroon-800 to-maroon-900 text-cream-50">
+    <div class="container-narrow text-center">
+      <h2 class="!text-cream-50">कौनसी पूजा आपके लिए सही है?</h2>
+      <p class="text-cream-200 mt-3">पंडित जी आपकी कुंडली देखकर सलाह देंगे — फ्री।</p>
+      <a href={SITE.phone.tel} data-source="pujas-cta" class="btn-call-lg mt-6 bg-gold-500 hover:bg-gold-600 text-maroon-900">
+        <Icon name="mdi:phone-in-talk" class="w-6 h-6" />
+        सलाह लें · {SITE.phone.display}
+      </a>
+    </div>
+  </section>
+</BaseLayout>
