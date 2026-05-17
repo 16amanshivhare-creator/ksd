@@ -1,0 +1,57 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE } from '@data/site';
+
+/**
+ * Upcoming auspicious muhurat dates — adds Event schema markup + urgency CTR signal.
+ * Update via /admin/ Sveltia CMS or src/data/muhurats.ts in future.
+ */
+const muhurats = [
+  { date: '2026-08-09', name: 'नाग पंचमी', tithi: 'श्रावण शुक्ल पंचमी', sig: '★★★★★ सर्वोत्तम — काल सर्प दोष के लिए वर्ष का सबसे शुभ दिन' },
+  { date: '2026-08-04', name: 'श्रावण सोमवार (प्रथम)', tithi: 'श्रावण मास सोमवार', sig: '★★★★ अत्यंत शुभ — महामृत्युंजय + काल सर्प दोष दोनों के लिए' },
+  { date: '2026-08-11', name: 'श्रावण सोमवार (द्वितीय)', tithi: 'श्रावण मास सोमवार', sig: '★★★★ अत्यंत शुभ दिवस' },
+  { date: '2026-08-23', name: 'श्रावण अमावस्या', tithi: 'पितृ तर्पण + KSD', sig: '★★★★ पितृ दोष + काल सर्प दोष काल' },
+  { date: '2026-09-01', name: 'भाद्रपद अमावस्या', tithi: 'पितृ पक्ष आरंभ', sig: '★★★ पितृ दोष पूजा के लिए' },
+  { date: '2026-09-22', name: 'सर्व पितृ अमावस्या', tithi: 'महालय अमावस्या', sig: '★★★★★ पितृ दोष का महापर्व' }
+];
+
+const formatDate = (d: string) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+const daysAway = (d: string) => Math.max(0, Math.ceil((new Date(d).getTime() - Date.now()) / 86400000));
+---
+
+<section class="py-16 bg-gradient-to-b from-cream-50 to-saffron-50 border-y border-gold-200">
+  <div class="container-wide">
+    <header class="text-center max-w-2xl mx-auto mb-8">
+      <p class="badge-trust mb-3">आगामी मुहूर्त · Upcoming Muhurats</p>
+      <h2>आने वाले शुभ मुहूर्त — काल सर्प दोष पूजा उज्जैन 2026<span class="block text-xl text-saffron-700 font-display font-medium mt-1">Upcoming Auspicious Dates — Kaal Sarp Dosh Puja Ujjain 2026</span></h2>
+      <p class="text-ink-700 mt-3">पंडित जी आपकी कुंडली के अनुसार इनमें से सही दिन चुनेंगे।<span class="block italic text-sm">Pandit Ji will select the right date for you based on your kundli.</span></p>
+    </header>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+      {muhurats.map((m) => (
+        <article class="bg-white border-2 border-gold-200 rounded-xl p-5 hover:border-maroon-400 transition-colors" itemscope itemtype="https://schema.org/Event">
+          <meta itemprop="startDate" content={m.date} />
+          <meta itemprop="location" content="Ujjain, Madhya Pradesh, India" />
+          <meta itemprop="name" content={`${m.name} — Kaal Sarp Dosh Puja Ujjain`} />
+          <header class="flex items-start justify-between gap-2 mb-2">
+            <div>
+              <p class="text-2xl font-display font-bold text-maroon-900 leading-none" itemprop="name">{m.name}</p>
+              <p class="text-xs text-saffron-700 font-semibold mt-1">{m.tithi}</p>
+            </div>
+            <span class="badge-trust shrink-0">{daysAway(m.date)} दिन</span>
+          </header>
+          <p class="text-sm text-ink-700 mt-2"><Icon name="mdi:calendar" class="w-4 h-4 inline text-maroon-700" /> {formatDate(m.date)}</p>
+          <p class="text-xs text-ink-600 mt-2">{m.sig}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="text-center mt-8">
+      <p class="text-sm text-ink-700 mb-3">इन दिनों स्लॉट जल्दी भर जाते हैं — पहले से बुक कर लें</p>
+      <a href={SITE.phone.tel} data-source="muhurats" class="btn-call-lg">
+        <Icon name="mdi:phone-in-talk" class="w-6 h-6" />
+        अभी बुक करें · {SITE.phone.display}
+      </a>
+    </div>
+  </div>
+</section>

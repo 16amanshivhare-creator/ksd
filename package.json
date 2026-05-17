@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "extract": "node scripts/extract-wp-content.mjs",
-    "images": "node scripts/optimize-images.mjs"
+    "images": "node scripts/optimize-images.mjs",
+    "cms": "decap-server"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -28,6 +29,7 @@
     "@iconify-json/heroicons": "^1.2.1",
     "@iconify-json/mdi": "^1.2.1",
     "@tailwindcss/typography": "^0.5.19",
+    "decap-server": "^3.7.0",
     "node-fetch": "^3.3.2",
     "turndown": "^7.2.0"
   }

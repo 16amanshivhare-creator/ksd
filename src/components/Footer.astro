@@ -12,9 +12,9 @@ const year = new Date().getFullYear();
         <span class="font-display font-bold text-lg text-cream-50">काल सर्प दोष पूजा</span>
       </div>
       <p class="text-sm text-cream-200 leading-relaxed">
-        उज्जैन के मंगलनाथ मंदिर (मंगल देव की जन्मस्थली) के विद्वान पंडित द्वारा प्रामाणिक वैदिक काल सर्प दोष पूजा।
+        <strong class="text-cream-50">काल सर्प दोष पूजा उज्जैन</strong> — विद्वान वैदिक पंडित द्वारा 12 प्रकार के दोष का प्रामाणिक निवारण। शिप्रा तट · महाकाल की नगरी।
       </p>
-      <p class="text-xs text-cream-300">15+ वर्ष अनुभव · 500+ परिवार</p>
+      <p class="text-xs text-cream-300">15+ वर्ष अनुभव · 5,000+ परिवार</p>
     </div>
 
     <nav aria-label="Footer navigation">
@@ -42,17 +42,24 @@ const year = new Date().getFullYear();
         <span class="font-mono">{SITE.phone.display}</span>
       </a>
       <address class="not-italic text-sm text-cream-200 leading-relaxed">
-        {SITE.address.streetAddress}<br />
-        {SITE.address.locality}, {SITE.address.region} {SITE.address.postalCode}
+        {SITE.address.locality}, {SITE.address.region}<br />
+        <a href={SITE.gmb.profileUrl} target="_blank" rel="noopener noreferrer" class="text-saffron-300 hover:text-gold-300 text-xs inline-flex items-center gap-1 mt-1">
+          <Icon name="mdi:map-marker" class="w-3.5 h-3.5" /> Google Maps पर देखें
+        </a>
       </address>
-      <p class="text-xs text-cream-300 mt-3">समय: {SITE.hours.open} – {SITE.hours.close}</p>
     </div>
   </div>
 
   <div class="border-t border-maroon-800">
-    <div class="container-wide py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-cream-300">
+    <div class="container-wide py-5 grid gap-3 md:grid-cols-3 items-center text-xs text-cream-300">
       <p>© {year} {SITE.name} · सर्वाधिकार सुरक्षित</p>
-      <p>Built with care · Authentic Vedic seva</p>
+      <nav class="flex flex-wrap justify-center gap-x-4 gap-y-1" aria-label="Legal">
+        <a href="/privacy-policy/" class="hover:text-saffron-300">Privacy Policy</a>
+        <a href="/terms-of-service/" class="hover:text-saffron-300">Terms</a>
+        <a href="/refund-policy/" class="hover:text-saffron-300">Refund</a>
+        <a href="/disclaimer/" class="hover:text-saffron-300">Disclaimer</a>
+      </nav>
+      <p class="md:text-right">Built with care · Authentic Vedic seva</p>
     </div>
   </div>
 </footer>

@@ -4,10 +4,10 @@ export const SITE = {
   url: 'https://kaalsarpdoshpujaujjain.com',
   name: 'Kaal Sarp Dosh Puja Ujjain',
   nameHi: 'काल सर्प दोष पूजा उज्जैन',
-  tagline: 'Authentic Vedic Pandit · Mangalnath Mandir · Ujjain',
-  taglineHi: 'प्रामाणिक वैदिक पंडित · मंगलनाथ मंदिर · उज्जैन',
-  description: 'Ujjain ke Mangalnath Mandir ke vidvan pandit dwara Kaal Sarp Dosh Puja — 12 prakar ka nivaran, prachin vedic vidhi, sahi muhurat, paardarshi ₹2,100 onwards pricing. 15+ varsh anubhav, 500+ parivaron ne kaam karaaya.',
-  metaDescription: 'Ujjain mein Kaal Sarp Dosh Puja vidvan pandit se — Mangalnath Mandir, 12 prakar ka nivaran, sahi muhurat, ₹3,100 onwards. 500+ parivaron ne karwaayi. Call: +91 9424002309',
+  tagline: 'Kaal Sarp Dosh Puja Ujjain · Authentic Vedic Pandit',
+  taglineHi: 'काल सर्प दोष पूजा उज्जैन · प्रामाणिक वैदिक पंडित',
+  description: 'Kaal Sarp Dosh Puja Ujjain — vidvan vaidik pandit dwara 12 prakar ka Kaal Sarp Dosh Nivaran. Online booking, sahi muhurat, prachin vedic vidhi, paardarshi ₹3,100 onwards. Shipra tat par 5,000+ parivaron ne karwaayi.',
+  metaDescription: 'Kaal Sarp Dosh Puja Ujjain — vidvan vaidik pandit se 12 prakar ka Kaal Sarp Dosh Nivaran Puja. Online booking, sahi muhurat, ₹3,100 se. 5,000+ parivar. Call: +91 9424002309',
   locale: 'hi-IN',
   alternateLocales: ['en-IN', 'mr-IN'],
 
@@ -19,24 +19,22 @@ export const SITE = {
   },
 
   address: {
-    streetAddress: 'Mangalnath Mandir, Ankpath Marg',
+    streetAddress: 'Mangalnath Mandir, Ankpath Marg, Kamed',
     locality: 'Ujjain',
     region: 'Madhya Pradesh',
     postalCode: '456006',
     country: 'IN',
-    geo: { lat: 23.2018, lng: 75.7768 }
+    geo: { lat: 23.2222254, lng: 75.7861371 }
   },
-
-  hours: { open: '06:00', close: '21:00' },
 
   pandit: {
     name: 'Pandit Ji',
     nameHi: 'पंडित जी',
-    bio: '15+ years of experience in Vedic rituals at Mangalnath Mandir, Ujjain — birthplace of Mangal Dev. Performed Kaal Sarp Dosh Puja for 500+ families across UP, Rajasthan, Bihar, Delhi & Mumbai.',
-    bioHi: 'मंगलनाथ मंदिर (मंगल देव की जन्मस्थली) उज्जैन में 15+ वर्षों का वैदिक अनुष्ठान अनुभव। UP, राजस्थान, बिहार, दिल्ली, मुंबई के 500+ परिवारों के लिए काल सर्प दोष पूजा सम्पन्न।',
+    bio: 'Ujjain ke vaidik vidvan pandit — 15+ years experience in Kaal Sarp Dosh Puja. Performed for 5,000+ families across UP, Rajasthan, Bihar, Delhi & Mumbai. Shipra tat + Mahakaleshwar nagri.',
+    bioHi: 'उज्जैन के विद्वान वैदिक पंडित — काल सर्प दोष पूजा में 15+ वर्षों का अनुभव। UP, राजस्थान, बिहार, दिल्ली, मुंबई के 5,000+ परिवारों के लिए पूजा सम्पन्न। शिप्रा तट · महाकाल की नगरी।',
     photo: '/images/pandit.jpg',
     experience: '15+',
-    familiesServed: '500+'
+    familiesServed: '5,000+'
   },
 
   pricing: {
@@ -48,7 +46,10 @@ export const SITE = {
   gmb: {
     rating: 5.0,
     reviewCount: 145,
-    profileUrl: '' // TODO: add when Aman provides
+    profileUrl: 'https://www.google.com/maps/place/Kaal+Sarp+Dosh+Puja+Ujjain+%7C+Mahamrityunjaya+Jaap+Ujjain/@23.2222254,75.7861371,17z/data=!3m1!4b1!4m6!3m5!1s0x396377edb42be463:0xc670b32609cdcf3f!8m2!3d23.2222254!4d75.7861371!16s%2Fg%2F11sx21jkmx',
+    cid: '0xc670b32609cdcf3f',
+    placeId: 'g/11sx21jkmx',
+    name: 'Kaal Sarp Dosh Puja Ujjain | Mahamrityunjaya Jaap Ujjain'
   },
 
   social: {
@@ -75,16 +76,16 @@ export const NAV_PRIMARY = [
 export const PUJA_SERVICES = [
   {
     slug: '/',
-    title: 'Kaal Sarp Dosh Puja',
-    titleHi: 'काल सर्प दोष पूजा',
-    short: '12 prakar ka nivaran · Vedic vidhi · Sahi muhurat',
+    title: 'Kaal Sarp Dosh Puja Ujjain',
+    titleHi: 'काल सर्प दोष पूजा उज्जैन',
+    short: 'Kaal Sarp Dosh Nivaran · 12 prakar · Vedic vidhi · Online booking',
     price: 3100
   },
   {
     slug: '/mangal-dosh-puja-in-ujjain/',
     title: 'Mangal Dosh Puja',
     titleHi: 'मंगल दोष पूजा',
-    short: 'Manglik nivaran · Mangalnath Mandir · Vivah baadha door',
+    short: 'Manglik dosh nivaran · Vivah baadha door · Ujjain',
     price: 3100
   },
   {

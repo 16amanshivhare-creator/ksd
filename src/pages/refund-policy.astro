@@ -1,0 +1,73 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { SITE } from '@data/site';
+import { breadcrumbSchema } from '@lib/schema';
+
+const title = 'Refund & Cancellation Policy — Kaal Sarp Dosh Puja Ujjain';
+const description = 'Refund and cancellation policy for puja bookings at Kaal Sarp Dosh Puja Ujjain. Transparent terms, no hidden charges.';
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Refund Policy', url: '/refund-policy/' }
+])];
+---
+
+<BaseLayout title={title} description={description} schemas={schemas}>
+  <section class="py-12 bg-gradient-to-br from-saffron-50 to-cream-100 border-b border-gold-200">
+    <div class="container-narrow text-center">
+      <p class="badge-trust mb-3">Legal</p>
+      <h1>Refund & Cancellation Policy</h1>
+      <p class="text-ink-600 mt-2">Last updated: 2026-05-17</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="container-narrow prose-vedic">
+      <h2>No Advance Payment</h2>
+      <p>We do not require any advance payment at the time of booking. Payment is made on the day of the puja in cash, UPI, or bank transfer — only after the puja is fully completed to your satisfaction.</p>
+
+      <h2>Cancellation Window</h2>
+      <ul>
+        <li><strong>More than 24 hours before puja:</strong> Free cancellation, no charge</li>
+        <li><strong>Less than 24 hours before puja:</strong> If samagri has been procured (silver naag-nagin, hawan samagri, etc.), actual cost of samagri may be charged</li>
+        <li><strong>Same-day cancellation:</strong> Samagri cost + pandit ji's time charge (typically ₹500-1,500 depending on preparation)</li>
+      </ul>
+
+      <h2>Refund Cases</h2>
+      <p>Since we do not collect advance payment, refunds rarely apply. However, in these cases we will refund or adjust:</p>
+      <ul>
+        <li>Puja not completed as agreed due to our fault</li>
+        <li>Pandit ji unable to attend on the agreed date (we will reschedule or refund any amount paid)</li>
+        <li>Samagri quality issues (we will replace at no cost)</li>
+      </ul>
+
+      <h2>How to Request Cancellation</h2>
+      <p>Call us at <a href={SITE.phone.tel}>{SITE.phone.display}</a> as early as possible. We will:</p>
+      <ol>
+        <li>Confirm your cancellation</li>
+        <li>Calculate any applicable charges transparently</li>
+        <li>Refund any pre-paid amount (if applicable) within 7 working days to the original payment method</li>
+      </ol>
+
+      <h2>Rescheduling</h2>
+      <p>Rescheduling is always free — just call us with at least 6 hours' notice and we will find a new muhurat. No charges, no questions asked.</p>
+
+      <h2>Refund Method</h2>
+      <p>Refunds are made via:</p>
+      <ul>
+        <li>UPI transfer (instant)</li>
+        <li>Bank transfer (1-2 working days)</li>
+        <li>Cash if you are in Ujjain</li>
+      </ul>
+
+      <h2>Disputes</h2>
+      <p>If you are not satisfied with the puja or feel a refund is warranted, please call us directly first. We commit to resolving any dispute in good faith within 7 days.</p>
+
+      <h2>Contact</h2>
+      <p>For any refund or cancellation request:</p>
+      <ul>
+        <li><strong>Phone:</strong> <a href={SITE.phone.tel}>{SITE.phone.display}</a> (preferred — fastest)</li>
+        <li><strong>Days:</strong> Monday – Sunday</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
