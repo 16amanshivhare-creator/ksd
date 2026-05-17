@@ -1,0 +1,28 @@
+# Cloudflare Pages 301 redirect map — preserves SEO from old WordPress URLs
+# Format: /old-path /new-path 301
+# All old URLs map 1:1 (already preserved in Astro routes — these are safety net for variants)
+
+# Common WordPress trailing-slash variants → Astro trailing slash already enforced via config
+/index.php       /                                          301
+/wp-login.php    /                                          301
+/feed/           /rss.xml                                   301
+/feed             /rss.xml                                   301
+
+# Author archive (WP) → blog index
+/author/*        /our-blog/                                 301
+
+# WP search → blog index
+/?s=*            /our-blog/                                 301
+
+# Tag archive (WP) → blog index (if any indexed)
+/tag/*           /our-blog/                                 301
+
+# Old uploads paths if any indexed images move
+# /wp-content/uploads/* /images/:splat 301
+
+# Catch-all wp-admin attempts
+/wp-admin/*      /                                          301
+/wp-content/*    /                                          301
+
+# Marathi URL-encoded post (skipped at build — re-add via CMS later)
+/कालसर्प-दोष-म्हणजे-काय/  /kaal-sarp-dosh-kya-hai/  301

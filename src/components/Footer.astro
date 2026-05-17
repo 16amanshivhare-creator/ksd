@@ -1,0 +1,58 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE, NAV_PRIMARY, PUJA_SERVICES } from '@data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-20 bg-maroon-900 text-cream-100">
+  <div class="container-wide py-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+    <div class="space-y-3">
+      <div class="flex items-center gap-2.5">
+        <span class="w-10 h-10 rounded-full bg-gradient-to-br from-saffron-400 to-saffron-700 flex items-center justify-center text-white font-display font-bold">ॐ</span>
+        <span class="font-display font-bold text-lg text-cream-50">काल सर्प दोष पूजा</span>
+      </div>
+      <p class="text-sm text-cream-200 leading-relaxed">
+        उज्जैन के मंगलनाथ मंदिर (मंगल देव की जन्मस्थली) के विद्वान पंडित द्वारा प्रामाणिक वैदिक काल सर्प दोष पूजा।
+      </p>
+      <p class="text-xs text-cream-300">15+ वर्ष अनुभव · 500+ परिवार</p>
+    </div>
+
+    <nav aria-label="Footer navigation">
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-gold-300 mb-3">पृष्ठ</h3>
+      <ul class="space-y-2">
+        {NAV_PRIMARY.map((it) => (
+          <li><a href={it.href} class="text-sm text-cream-200 hover:text-saffron-300">{it.labelHi}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav aria-label="Puja services">
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-gold-300 mb-3">पूजाएँ</h3>
+      <ul class="space-y-2">
+        {PUJA_SERVICES.map((p) => (
+          <li><a href={p.slug} class="text-sm text-cream-200 hover:text-saffron-300">{p.titleHi}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-gold-300 mb-3">सम्पर्क</h3>
+      <a href={SITE.phone.tel} data-source="footer" class="flex items-center gap-2 text-cream-100 hover:text-saffron-300 mb-3">
+        <Icon name="mdi:phone" class="w-5 h-5" />
+        <span class="font-mono">{SITE.phone.display}</span>
+      </a>
+      <address class="not-italic text-sm text-cream-200 leading-relaxed">
+        {SITE.address.streetAddress}<br />
+        {SITE.address.locality}, {SITE.address.region} {SITE.address.postalCode}
+      </address>
+      <p class="text-xs text-cream-300 mt-3">समय: {SITE.hours.open} – {SITE.hours.close}</p>
+    </div>
+  </div>
+
+  <div class="border-t border-maroon-800">
+    <div class="container-wide py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-cream-300">
+      <p>© {year} {SITE.name} · सर्वाधिकार सुरक्षित</p>
+      <p>Built with care · Authentic Vedic seva</p>
+    </div>
+  </div>
+</footer>

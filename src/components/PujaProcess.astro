@@ -1,0 +1,31 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const steps = [
+  { n: 1, icon: 'mdi:phone-in-talk', title: 'सम्पर्क + मुहूर्त', body: 'पंडित जी से बात करें — कुंडली / नाम / गोत्र साझा करें। शुभ मुहूर्त निकाला जाएगा।' },
+  { n: 2, icon: 'mdi:calendar-check', title: 'बुकिंग पक्की', body: 'मुहूर्त, स्थान, समय और पूजा सामग्री की सूची आपको दी जाएगी। एडवांस की जरूरत नहीं।' },
+  { n: 3, icon: 'mdi:fire', title: 'पूजा / जाप', body: 'मंगलनाथ मंदिर या त्रिवेणी संगम पर वैदिक विधि से पूजा सम्पन्न — संकल्प, मंत्र जाप, हवन, दान।' },
+  { n: 4, icon: 'mdi:flower-tulip', title: 'प्रसाद + प्रमाण', body: 'पूजा की वीडियो, प्रसाद और संकल्प प्रमाण आपको भेजा जाएगा।' }
+];
+---
+
+<section id="process" class="py-16 bg-white">
+  <div class="container-wide">
+    <header class="text-center max-w-2xl mx-auto mb-10">
+      <p class="badge-trust mb-3">पूजा प्रक्रिया</p>
+      <h2>4 सरल चरण · पारदर्शी विधि</h2>
+      <p class="text-ink-600 mt-2">कोई हिडन चार्ज नहीं · सब कुछ पहले ही स्पष्ट</p>
+    </header>
+
+    <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {steps.map((s) => (
+        <li class="relative bg-cream-50 border border-gold-200 rounded-xl p-5 shadow-soft">
+          <span class="absolute -top-3 -left-3 w-9 h-9 rounded-full bg-maroon-700 text-cream-50 flex items-center justify-center font-display font-bold shadow-cta">{s.n}</span>
+          <Icon name={s.icon} class="w-9 h-9 text-saffron-600 mb-3" />
+          <h3 class="text-lg !text-maroon-800 !leading-tight mb-1.5">{s.title}</h3>
+          <p class="text-sm text-ink-700 leading-relaxed">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

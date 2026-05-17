@@ -1,0 +1,46 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE, NAV_PRIMARY } from '@data/site';
+const path = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 bg-cream-50/95 backdrop-blur-md border-b border-gold-200 shadow-soft">
+  <div class="container-wide flex items-center justify-between gap-4 py-3">
+    <a href="/" class="flex items-center gap-2.5 shrink-0" aria-label={SITE.name}>
+      <span class="w-9 h-9 rounded-full bg-gradient-to-br from-saffron-500 to-maroon-700 flex items-center justify-center text-white font-display font-bold shadow-soft">ॐ</span>
+      <span class="hidden sm:flex flex-col leading-tight">
+        <span class="text-maroon-900 font-display font-bold text-base">काल सर्प दोष पूजा</span>
+        <span class="text-ink-600 text-xs">उज्जैन · मंगलनाथ मंदिर</span>
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
+      {NAV_PRIMARY.map((item) => {
+        const active = path === item.href || (item.href !== '/' && path.startsWith(item.href));
+        return (
+          <a
+            href={item.href}
+            class:list={[
+              'px-3 py-2 rounded-md font-semibold text-sm transition-colors',
+              active ? 'bg-maroon-100 text-maroon-900' : 'text-ink-700 hover:bg-saffron-100 hover:text-maroon-800'
+            ]}
+            aria-current={active ? 'page' : undefined}
+          >
+            {item.labelHi}
+          </a>
+        );
+      })}
+    </nav>
+
+    <a
+      href={SITE.phone.tel}
+      data-source="header"
+      class="btn-call text-sm md:text-base px-4 md:px-5 py-2.5 md:py-3 whitespace-nowrap"
+      aria-label={`Call ${SITE.phone.display}`}
+    >
+      <Icon name="mdi:phone" class="w-5 h-5" />
+      <span class="hidden xs:inline">Call</span>
+      <span class="font-mono tracking-tight">{SITE.phone.display}</span>
+    </a>
+  </div>
+</header>

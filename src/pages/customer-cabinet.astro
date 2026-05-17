@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { SITE } from '@data/site';
+import { breadcrumbSchema } from '@lib/schema';
+
+const title = 'Customer Support — Kaal Sarp Dosh Puja Ujjain';
+const description = 'Booking confirmation, video / prasad delivery, post-puja follow-up, ya kisi bhi sahayata ke liye sampark karein.';
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Customer Cabinet', url: '/customer-cabinet/' }
+])];
+---
+
+<BaseLayout title={title} description={description} schemas={schemas}>
+  <section class="py-12 bg-gradient-to-br from-saffron-50 to-cream-100 border-b border-gold-200">
+    <div class="container-wide text-center">
+      <p class="badge-trust mb-3">ग्राहक सहायता</p>
+      <h1>Customer Cabinet</h1>
+      <p class="text-lg text-ink-700 mt-3">पूजा से जुड़ी सहायता, बुकिंग कन्फर्मेशन, प्रसाद डिलीवरी, या कोई भी प्रश्न।</p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container-wide grid md:grid-cols-3 gap-5 max-w-5xl">
+      {[
+        { icon: 'mdi:calendar-check', t: 'बुकिंग सहायता', d: 'पूजा की तारीख, मुहूर्त, और कन्फर्मेशन' },
+        { icon: 'mdi:video', t: 'पूजा वीडियो', d: 'पूजा के बाद वीडियो + संकल्प प्रमाण की डिलीवरी' },
+        { icon: 'mdi:gift', t: 'प्रसाद डिलीवरी', d: 'घर तक प्रसाद / सामग्री भेजने का स्टेटस' },
+        { icon: 'mdi:help-circle', t: 'पूजा सम्बंधी', d: 'पूजा के बाद के नियम, सावधानियाँ' },
+        { icon: 'mdi:account-question', t: 'ज्योतिषीय परामर्श', d: 'कुंडली, मुहूर्त, उपाय की जानकारी' },
+        { icon: 'mdi:phone-message', t: 'कोई भी प्रश्न', d: 'पंडित जी से सीधे बात करें' }
+      ].map((c) => (
+        <div class="bg-cream-50 border border-gold-200 rounded-xl p-5 shadow-soft">
+          <Icon name={c.icon} class="w-10 h-10 text-saffron-600 mb-3" />
+          <h3 class="text-lg !text-maroon-800 !leading-tight">{c.t}</h3>
+          <p class="text-sm text-ink-700 mt-1">{c.d}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="container-narrow text-center mt-12">
+      <a href={SITE.phone.tel} data-source="customer-cabinet" class="btn-call-lg">
+        <Icon name="mdi:phone-in-talk" class="w-6 h-6" />
+        सहायता के लिए कॉल करें · {SITE.phone.display}
+      </a>
+      <p class="text-sm text-ink-600 mt-3">समय: {SITE.hours.open} – {SITE.hours.close}</p>
+    </div>
+  </section>
+</BaseLayout>

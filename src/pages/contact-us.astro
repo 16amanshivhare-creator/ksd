@@ -1,0 +1,65 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { SITE } from '@data/site';
+import { breadcrumbSchema } from '@lib/schema';
+
+const title = 'Contact Pandit Ji — Kaal Sarp Dosh Puja Ujjain | Call 9424002309';
+const description = `Ujjain Mangalnath Mandir ke pandit ji se direct sampark karein puja booking ke liye. Phone: ${SITE.phone.display}. Address: ${SITE.address.streetAddress}, ${SITE.address.locality}.`;
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Contact', url: '/contact-us/' }
+])];
+---
+
+<BaseLayout title={title} description={description} schemas={schemas}>
+  <section class="py-12 bg-gradient-to-br from-saffron-50 to-cream-100 border-b border-gold-200">
+    <div class="container-wide text-center">
+      <p class="badge-trust mb-3">सम्पर्क करें</p>
+      <h1>पंडित जी से बात करें</h1>
+      <p class="text-lg text-ink-700 mt-3 max-w-2xl mx-auto">पूजा बुकिंग, मुहूर्त, या किसी भी प्रश्न के लिए सीधे फोन करें — कोई एडवांस नहीं।</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="container-wide grid md:grid-cols-2 gap-8 max-w-5xl">
+      <a href={SITE.phone.tel} data-source="contact-phone" class="group bg-gradient-to-br from-maroon-700 to-maroon-900 text-cream-50 rounded-2xl p-8 shadow-cta hover:scale-[1.02] transition-transform">
+        <Icon name="mdi:phone-in-talk" class="w-12 h-12 text-gold-300 mb-4" />
+        <p class="text-sm text-cream-300 uppercase tracking-wider">सीधे फोन करें</p>
+        <p class="font-mono text-3xl font-bold mt-1">{SITE.phone.display}</p>
+        <p class="text-cream-200 mt-3 text-sm">समय: {SITE.hours.open} – {SITE.hours.close} · सोम–रवि</p>
+        <p class="mt-4 inline-flex items-center gap-1.5 text-gold-300 font-semibold">
+          अभी कॉल करें <Icon name="mdi:arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1" />
+        </p>
+      </a>
+
+      <div class="bg-cream-50 border border-gold-200 rounded-2xl p-8 shadow-soft">
+        <Icon name="mdi:map-marker" class="w-12 h-12 text-saffron-600 mb-4" />
+        <p class="text-sm text-ink-600 uppercase tracking-wider">पता</p>
+        <address class="not-italic text-ink-800 mt-2 leading-relaxed text-lg">
+          <strong class="text-maroon-900">{SITE.address.streetAddress}</strong><br />
+          {SITE.address.locality}, {SITE.address.region}<br />
+          PIN: {SITE.address.postalCode}, India
+        </address>
+        <p class="mt-4 text-sm text-ink-700">मंगल देव की जन्मस्थली — काल सर्प दोष निवारण का प्रमुख तीर्थ स्थल।</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 bg-cream-100">
+    <div class="container-wide max-w-5xl">
+      <div class="aspect-video rounded-xl overflow-hidden border border-gold-200 shadow-soft bg-white">
+        <iframe
+          src={`https://www.google.com/maps?q=${SITE.address.geo.lat},${SITE.address.geo.lng}&output=embed`}
+          width="100%"
+          height="100%"
+          style="border:0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+          title="Mangalnath Mandir, Ujjain"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

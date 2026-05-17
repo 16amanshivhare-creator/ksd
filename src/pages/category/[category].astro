@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import { SITE } from '@data/site';
+import { breadcrumbSchema } from '@lib/schema';
+
+export async function getStaticPaths() {
+  return [
+    { params: { category: 'kaal-sarp-dosh' }, props: { displayName: 'काल सर्प दोष', en: 'Kaal Sarp Dosh' } },
+    { params: { category: 'blog' }, props: { displayName: 'ब्लॉग', en: 'Blog' } }
+  ];
+}
+
+const { category } = Astro.params;
+const { displayName, en } = Astro.props;
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft && data.category === category))
+  .sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+
+const title = `${en} — Articles & Guides | ${SITE.name}`;
+const description = `${displayName} category ke sabhi lekh — Ujjain ke pandit ji se vaidik gyaan, puja vidhi, mantra aur upay.`;
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Blog', url: '/our-blog/' },
+  { name: en, url: `/category/${category}/` }
+])];
+
+const formatDate = (d: Date) => d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+
+<BaseLayout title={title} description={description} schemas={schemas}>
+  <section class="py-12 bg-gradient-to-br from-saffron-50 to-cream-100 border-b border-gold-200">
+    <div class="container-wide text-center">
+      <p class="badge-trust mb-3">श्रेणी</p>
+      <h1>{displayName}</h1>
+      <p class="text-ink-600 mt-2">{posts.length} लेख</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map((post) => (
+          <article class="bg-cream-50 border border-gold-200 rounded-xl overflow-hidden shadow-soft">
+            {post.data.image && (
+              <a href={`/${post.slug}/`} class="block aspect-[16/10]">
+                <img src={post.data.image} alt={post.data.imageAlt || post.data.title} loading="lazy" class="w-full h-full object-cover" />
+              </a>
+            )}
+            <div class="p-5">
+              <h2 class="text-lg !leading-tight"><a href={`/${post.slug}/`} class="!text-maroon-900">{post.data.title}</a></h2>
+              <p class="text-sm text-ink-700 mt-2 line-clamp-3">{post.data.description}</p>
+              <p class="text-xs text-ink-600 mt-3">{formatDate(post.data.pubDate)}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

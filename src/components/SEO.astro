@@ -1,0 +1,74 @@
+---
+import { SITE } from '@data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  language?: 'hi' | 'en' | 'mr';
+  schemas?: object[];
+  pubDate?: Date;
+  updatedDate?: Date;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  image = '/images/og-default.jpg',
+  type = 'website',
+  noindex = false,
+  language = 'hi',
+  schemas = [],
+  pubDate,
+  updatedDate
+} = Astro.props;
+
+const pageUrl = canonical || new URL(Astro.url.pathname, SITE.url).toString();
+const ogImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
+const localeMap = { hi: 'hi_IN', en: 'en_IN', mr: 'mr_IN' };
+---
+
+<!-- Primary meta -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={pageUrl} />
+<meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'} />
+<meta name="googlebot" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+<meta http-equiv="content-language" content={language === 'hi' ? 'hi-IN' : language === 'mr' ? 'mr-IN' : 'en-IN'} />
+<meta name="geo.region" content="IN-MP" />
+<meta name="geo.placename" content="Ujjain" />
+<meta name="geo.position" content="23.2018;75.7768" />
+<meta name="ICBM" content="23.2018, 75.7768" />
+<meta name="author" content={SITE.pandit.name} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={pageUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content={localeMap[language]} />
+<meta property="og:site_name" content={SITE.name} />
+{pubDate && <meta property="article:published_time" content={pubDate.toISOString()} />}
+{updatedDate && <meta property="article:modified_time" content={updatedDate.toISOString()} />}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Performance hints -->
+<link rel="preconnect" href="https://www.googletagmanager.com" />
+<link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+<!-- Schema.org JSON-LD -->
+{schemas.map((s) => (
+  <script type="application/ld+json" set:html={JSON.stringify(s)} />
+))}

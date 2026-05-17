@@ -1,0 +1,21 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE } from '@data/site';
+---
+
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-maroon-800 text-white shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.4)] no-print">
+  <a
+    href={SITE.phone.tel}
+    data-source="mobile-bar"
+    class="flex items-center justify-center gap-3 px-4 py-3.5 font-semibold text-base"
+    aria-label={`Call ${SITE.phone.display}`}
+  >
+    <span class="relative flex h-3 w-3">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-gold-400"></span>
+    </span>
+    <Icon name="mdi:phone-in-talk" class="w-6 h-6" />
+    <span>अभी कॉल करें ·</span>
+    <span class="font-mono tracking-tight">{SITE.phone.display}</span>
+  </a>
+</div>

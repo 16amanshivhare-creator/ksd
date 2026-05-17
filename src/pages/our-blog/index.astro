@@ -1,0 +1,72 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import { SITE } from '@data/site';
+import { breadcrumbSchema } from '@lib/schema';
+
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+
+const title = 'Blog — Kaal Sarp Dosh, Mangal Dosh, Vedic Jyotish Ujjain';
+const description = 'Kaal Sarp Dosh, Mangal Dosh, Pitra Dosh, Mahamrityunjay mantra — Ujjain ke pandit ji se prachin vaidik jyotish gyaan, articles aur upay.';
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Blog', url: '/our-blog/' }
+])];
+
+const formatDate = (d: Date) => d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+
+<BaseLayout title={title} description={description} schemas={schemas}>
+  <section class="py-12 bg-gradient-to-br from-saffron-50 to-cream-100 border-b border-gold-200">
+    <div class="container-wide text-center">
+      <p class="badge-trust mb-3">ब्लॉग</p>
+      <h1>वैदिक ज्ञान · ज्योतिष · पूजा विधि</h1>
+      <p class="text-lg text-ink-700 mt-3 max-w-2xl mx-auto">{allPosts.length} लेख · काल सर्प दोष, मंगल दोष, पित्र दोष, महामृत्युंजय मंत्र और अधिक</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="container-wide">
+      {allPosts.length === 0 && (
+        <p class="text-center text-ink-600 py-12">अभी कोई पोस्ट उपलब्ध नहीं। जल्द ही नए लेख जोड़े जाएँगे।</p>
+      )}
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {allPosts.map((post) => (
+          <article class="group bg-cream-50 border border-gold-200 rounded-xl overflow-hidden shadow-soft hover:shadow-cta transition-all">
+            {post.data.image && (
+              <a href={`/${post.slug}/`} class="block aspect-[16/10] overflow-hidden">
+                <img src={post.data.image} alt={post.data.imageAlt || post.data.title} loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </a>
+            )}
+            <div class="p-5">
+              <p class="text-xs text-saffron-700 font-semibold uppercase tracking-wider mb-2">{post.data.category === 'kaal-sarp-dosh' ? 'काल सर्प दोष' : 'ब्लॉग'}</p>
+              <h2 class="text-lg !leading-tight mb-2">
+                <a href={`/${post.slug}/`} class="!text-maroon-900 hover:!text-saffron-700">{post.data.title}</a>
+              </h2>
+              <p class="text-sm text-ink-700 line-clamp-3">{post.data.description}</p>
+              <div class="mt-4 flex items-center justify-between text-xs text-ink-600 border-t border-gold-100 pt-3">
+                <span>{formatDate(post.data.pubDate)}</span>
+                <a href={`/${post.slug}/`} class="text-saffron-700 font-semibold inline-flex items-center gap-1">
+                  पढ़ें <Icon name="mdi:arrow-right" class="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-cream-100">
+    <div class="container-narrow text-center">
+      <h2>पूजा के बारे में पंडित जी से सीधे पूछें</h2>
+      <a href={SITE.phone.tel} data-source="blog-cta" class="btn-call-lg mt-6">
+        <Icon name="mdi:phone-in-talk" class="w-6 h-6" />
+        Call · {SITE.phone.display}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

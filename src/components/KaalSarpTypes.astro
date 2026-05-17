@@ -1,0 +1,25 @@
+---
+import { KAAL_SARP_TYPES } from '@data/site';
+---
+
+<section class="py-16 bg-cream-100">
+  <div class="container-wide">
+    <header class="text-center max-w-2xl mx-auto mb-10">
+      <p class="badge-trust mb-3">12 प्रकार</p>
+      <h2>काल सर्प दोष के 12 प्रकार</h2>
+      <p class="text-ink-600 mt-2">कुंडली में राहु–केतु की स्थिति के अनुसार दोष का प्रकार बदलता है। पंडित जी विश्लेषण करके सही पूजा बताएँगे।</p>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {KAAL_SARP_TYPES.map((t) => (
+        <li class="flex items-center gap-3 bg-white border border-gold-200 rounded-lg px-4 py-3 hover:border-saffron-400 transition-colors">
+          <span class="w-9 h-9 rounded-full bg-saffron-100 text-saffron-700 font-display font-bold flex items-center justify-center shrink-0">{t.id}</span>
+          <div class="leading-tight">
+            <p class="font-display font-semibold text-maroon-900">{t.nameHi}</p>
+            <p class="text-xs text-ink-600">{t.name}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
