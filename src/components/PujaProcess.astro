@@ -2,19 +2,19 @@
 import { Icon } from 'astro-icon/components';
 
 const steps = [
-  { n: 1, icon: 'mdi:phone-in-talk', title: 'सम्पर्क + मुहूर्त', body: 'पंडित जी से बात करें — कुंडली / नाम / गोत्र साझा करें। शुभ मुहूर्त निकाला जाएगा।' },
-  { n: 2, icon: 'mdi:calendar-check', title: 'बुकिंग पक्की', body: 'मुहूर्त, स्थान, समय और पूजा सामग्री की सूची आपको दी जाएगी। एडवांस की जरूरत नहीं।' },
-  { n: 3, icon: 'mdi:fire', title: 'पूजा / जाप', body: 'मंगलनाथ मंदिर या त्रिवेणी संगम पर वैदिक विधि से पूजा सम्पन्न — संकल्प, मंत्र जाप, हवन, दान।' },
-  { n: 4, icon: 'mdi:flower-tulip', title: 'प्रसाद + प्रमाण', body: 'पूजा की वीडियो, प्रसाद और संकल्प प्रमाण आपको भेजा जाएगा।' }
+  { n: 1, icon: 'mdi:phone-in-talk', title: 'सम्पर्क + मुहूर्त', titleEn: 'Contact & Muhurat', body: 'पंडित जी से बात करें — कुंडली / नाम / गोत्र साझा करें। शुभ मुहूर्त निकाला जाएगा।', bodyEn: 'Call Pandit Ji and share your kundli, name, and gotra. Auspicious muhurat is calculated precisely.' },
+  { n: 2, icon: 'mdi:calendar-check', title: 'बुकिंग पक्की', titleEn: 'Confirm Booking', body: 'मुहूर्त, स्थान, समय और पूजा सामग्री की सूची आपको दी जाएगी। एडवांस की जरूरत नहीं।', bodyEn: 'You receive the muhurat date, venue, time, and samagri list. No advance payment required.' },
+  { n: 3, icon: 'mdi:fire', title: 'पूजा / जाप', titleEn: 'Puja & Jaap', body: 'शिप्रा तट / त्रिवेणी संगम पर वैदिक विधि से पूजा सम्पन्न — संकल्प, मंत्र जाप, हवन, दान।', bodyEn: 'Performed at Shipra Tat or Triveni Sangam as per Vedic vidhi — Sankalp, mantra jaap, hawan, daan.' },
+  { n: 4, icon: 'mdi:flower-tulip', title: 'प्रसाद + प्रमाण', titleEn: 'Prasad & Proof', body: 'पूजा की वीडियो, प्रसाद और संकल्प प्रमाण आपको भेजा जाएगा।', bodyEn: 'Full puja video, prasad, and sankalp pramaan certificate are sent to you.' }
 ];
 ---
 
 <section id="process" class="py-16 bg-white">
   <div class="container-wide">
     <header class="text-center max-w-2xl mx-auto mb-10">
-      <p class="badge-trust mb-3">पूजा प्रक्रिया</p>
-      <h2>4 सरल चरण · पारदर्शी विधि</h2>
-      <p class="text-ink-600 mt-2">कोई हिडन चार्ज नहीं · सब कुछ पहले ही स्पष्ट</p>
+      <p class="badge-trust mb-3">पूजा प्रक्रिया · Puja Process</p>
+      <h2>4 सरल चरण · पारदर्शी विधि<span class="block text-xl text-saffron-700 font-display font-medium mt-1">4 Simple Steps · Transparent Booking Process</span></h2>
+      <p class="text-ink-600 mt-2">कोई हिडन चार्ज नहीं · सब कुछ पहले ही स्पष्ट <span class="italic">· No hidden charges, everything clear upfront</span></p>
     </header>
 
     <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -22,8 +22,10 @@ const steps = [
         <li class="relative bg-cream-50 border border-gold-200 rounded-xl p-5 shadow-soft">
           <span class="absolute -top-3 -left-3 w-9 h-9 rounded-full bg-maroon-700 text-cream-50 flex items-center justify-center font-display font-bold shadow-cta">{s.n}</span>
           <Icon name={s.icon} class="w-9 h-9 text-saffron-600 mb-3" />
-          <h3 class="text-lg !text-maroon-800 !leading-tight mb-1.5">{s.title}</h3>
+          <h3 class="text-lg !text-maroon-800 !leading-tight">{s.title}</h3>
+          <p class="text-xs text-saffron-700 font-semibold mb-1.5">{s.titleEn}</p>
           <p class="text-sm text-ink-700 leading-relaxed">{s.body}</p>
+          <p class="text-xs text-ink-600 mt-1.5 italic leading-relaxed">{s.bodyEn}</p>
         </li>
       ))}
     </ol>

@@ -9,12 +9,12 @@ import { Icon } from 'astro-icon/components';
 import { SITE } from '@data/site';
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@lib/schema';
 
-const title = 'Mangal Dosh Puja in Ujjain | Mangalnath Mandir Pandit · ₹3,100 से';
-const description = 'Ujjain Mangalnath Mandir mein Mangal Dosh / Manglik Dosh nivaran puja vidvan pandit dwara. Vivah baadhayen door, 15+ varsh anubhav. Call: +91 9424002309';
+const title = 'Mangal Dosh Puja in Ujjain | Vidvan Vaidik Pandit · ₹3,100 से';
+const description = 'Ujjain mein Mangal Dosh / Manglik Dosh nivaran puja vidvan vaidik pandit dwara. Vivah baadhayen door, 15+ varsh anubhav. Call: +91 9424002309';
 
 const mangalFaqs = [
   { q: 'मंगल दोष क्या है?', a: 'जब कुंडली के 1, 4, 7, 8 या 12वें भाव में मंगल ग्रह स्थित हो, तब मंगल दोष / मांगलिक दोष बनता है। यह विवाह में देरी, वैवाहिक जीवन में अशांति, या दाम्पत्य कलह का कारण बन सकता है।' },
-  { q: 'मंगल दोष की पूजा कहाँ करवानी चाहिए?', a: 'उज्जैन का मंगलनाथ मंदिर — जो भगवान मंगल देव की जन्मस्थली है — मंगल दोष निवारण के लिए सर्वोत्तम स्थान माना गया है। यहाँ शिप्रा तट पर सम्पन्न पूजा का विशेष फल मिलता है।' },
+  { q: 'मंगल दोष की पूजा कहाँ करवानी चाहिए?', a: 'उज्जैन — जो भगवान मंगल देव से जुड़ी नगरी है और जहाँ महाकालेश्वर ज्योतिर्लिंग स्थित है — मंगल दोष निवारण के लिए सर्वोत्तम स्थान माना गया है। शिप्रा तट पर सम्पन्न पूजा का विशेष फल मिलता है।' },
   { q: 'मंगल दोष पूजा का खर्च कितना है?', a: 'हमारी मंगल दोष पूजा ₹3,100 से शुरू है — संकल्प, मंत्र जाप, हवन, सभी सामग्री और दान-दक्षिणा सहित। कुंडली के अनुसार सटीक मूल्य फोन पर बताया जाता है।' },
   { q: 'क्या मंगल दोष पूजा विवाह से पहले होनी चाहिए?', a: 'हाँ। मांगलिक व्यक्ति को विवाह से पूर्व मंगल दोष निवारण पूजा कराने की वैदिक परंपरा है। इससे वैवाहिक जीवन में सुख-शांति बनी रहती है।' }
 ];
@@ -23,7 +23,7 @@ const schemas = [
   serviceSchema({
     name: 'Mangal Dosh Puja in Ujjain',
     nameHi: 'मंगल दोष पूजा उज्जैन',
-    description: 'Authentic Vedic Mangal Dosh / Manglik Dosh Nivaran Puja at Mangalnath Mandir, Ujjain.',
+    description: 'Authentic Vedic Mangal Dosh / Manglik Dosh Nivaran Puja in Ujjain — Shipra tat.',
     slug: '/mangal-dosh-puja-in-ujjain/',
     price: SITE.pricing.starting
   }),
@@ -37,11 +37,11 @@ const schemas = [
 
 <BaseLayout title={title} description={description} schemas={schemas} language="hi">
   <Hero
-    h1="उज्जैन में मंगल दोष पूजा — मंगलनाथ मंदिर के पंडित से"
-    subtitle="मांगलिक दोष निवारण के लिए मंगल देव की जन्मस्थली पर वैदिक विधि से सम्पन्न पूजा। विवाह बाधाएँ दूर करें, ₹3,100 से।"
+    h1="उज्जैन में मंगल दोष पूजा — विद्वान वैदिक पंडित से"
+    subtitle="उज्जैन में मांगलिक दोष निवारण पूजा वैदिक विधि से सम्पन्न। विवाह बाधाएँ दूर करें, सही मुहूर्त, ₹3,100 से।"
     image="/images/hero-mangal.jpg"
-    imageAlt="Mangal Dosh Puja at Mangalnath Mandir, Ujjain"
-    trustBadges={['मंगलनाथ मंदिर', '15+ वर्ष', 'मांगलिक नivaran', 'सहमुहूर्त']}
+    imageAlt="Mangal Dosh Puja in Ujjain — Vedic Pandit"
+    trustBadges={['मंगल दोष पूजा उज्जैन', '15+ वर्ष', 'मांगलिक निवारण', 'शुभ मुहूर्त']}
   />
 
   <TrustStrip />
@@ -52,9 +52,9 @@ const schemas = [
       <p>
         वैदिक ज्योतिष के अनुसार, जब किसी की जन्म कुंडली के <strong>1, 4, 7, 8 या 12वें भाव</strong> में मंगल ग्रह स्थित होता है, तब वह व्यक्ति <strong>मांगलिक</strong> कहलाता है। मंगल का यह अशुभ प्रभाव विवाह में देरी, साथी से तालमेल की कमी, या वैवाहिक जीवन में अनबन का कारण बन सकता है।
       </p>
-      <h3>उज्जैन का महत्व</h3>
+      <h3>उज्जैन में मंगल दोष पूजा का महत्व</h3>
       <p>
-        उज्जैन में <strong>मंगलनाथ मंदिर</strong> — मंगल देव की जन्मस्थली — विश्व का एकमात्र ऐसा स्थान है जहाँ की पूजा सीधे मंगल देव से जुड़ी मानी जाती है। यहाँ पर सम्पन्न मंगल दोष निवारण पूजा का प्रभाव विशेष फलदायी होता है।
+        उज्जैन को <strong>मंगल देव से जुड़ी पवित्र नगरी</strong> माना जाता है। यहाँ महाकालेश्वर ज्योतिर्लिंग है और शिप्रा तट पर सम्पन्न पूजा का विशेष फलदायी प्रभाव होता है। प्राचीन वैदिक परंपरा के अनुसार उज्जैन कर्क रेखा पर है — इसी कारण यहाँ की पूजा का प्रभाव अधिक माना गया है।
       </p>
     </div>
   </section>

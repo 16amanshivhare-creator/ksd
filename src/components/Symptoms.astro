@@ -1,0 +1,50 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE } from '@data/site';
+
+const symptoms = [
+  { icon: 'mdi:alert', t: 'विवाह में देरी', en: 'Marriage Delays', d: 'शादी में लगातार रुकावटें या रिश्ते का टूट जाना।' },
+  { icon: 'mdi:emoticon-sick', t: 'बार-बार बीमारी', en: 'Recurring Illness', d: 'पुरानी स्वास्थ्य समस्याएँ जो डॉक्टर से ठीक नहीं हो रहीं।' },
+  { icon: 'mdi:cash-remove', t: 'आर्थिक हानि', en: 'Financial Loss', d: 'लगातार पैसे का नुकसान, व्यवसाय में घाटा या रुकावट।' },
+  { icon: 'mdi:account-child', t: 'संतान सुख में बाधा', en: 'Child-Related Issues', d: 'संतान प्राप्ति में देरी या संतान के स्वास्थ्य की चिंता।' },
+  { icon: 'mdi:sleep', t: 'सपनों में सांप दिखना', en: 'Snake Dreams', d: 'बार-बार सपनों में सर्प दिखना या सर्प से संबंधित डर।' },
+  { icon: 'mdi:weather-cloudy', t: 'मानसिक अशांति', en: 'Mental Unrest', d: 'बिना कारण चिंता, घबराहट या अकारण भय बना रहना।' },
+  { icon: 'mdi:home-alert', t: 'पारिवारिक कलह', en: 'Family Disputes', d: 'घर में लगातार झगड़े, मतभेद और अशांति।' },
+  { icon: 'mdi:school', t: 'शिक्षा / करियर रुकावट', en: 'Career Stagnation', d: 'पढ़ाई में मन न लगना, नौकरी न मिलना या तरक्की रुक जाना।' }
+];
+---
+
+<section class="py-16 bg-cream-50">
+  <div class="container-wide">
+    <header class="text-center max-w-2xl mx-auto mb-10">
+      <p class="badge-trust mb-3">लक्षण · Symptoms</p>
+      <h2>क्या आपको काल सर्प दोष है? — 8 मुख्य लक्षण<span class="block text-xl text-saffron-700 font-display font-medium mt-1">Do You Have Kaal Sarp Dosh? — 8 Key Symptoms</span></h2>
+      <p class="text-ink-600 mt-3 leading-relaxed">
+        काल सर्प दोष के लक्षण हर व्यक्ति में अलग होते हैं। यदि इनमें से <strong>3 या अधिक लक्षण</strong> आपके जीवन में हैं, तो कुंडली की जाँच करवाना आवश्यक है।
+        <span class="block mt-1 text-sm italic">Kaal Sarp Dosh manifests differently in every person. If 3 or more of these symptoms apply to you, it's important to get your kundli analyzed.</span>
+      </p>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {symptoms.map((s) => (
+        <li class="bg-white border border-gold-200 rounded-xl p-5 shadow-soft hover:border-saffron-400 transition-colors">
+          <div class="w-11 h-11 rounded-full bg-maroon-100 text-maroon-700 flex items-center justify-center mb-3">
+            <Icon name={s.icon} class="w-6 h-6" />
+          </div>
+          <h3 class="text-base !text-maroon-900 !leading-tight mb-1">{s.t}</h3>
+          <p class="text-xs text-saffron-700 font-semibold mb-2">{s.en}</p>
+          <p class="text-sm text-ink-700 leading-relaxed">{s.d}</p>
+        </li>
+      ))}
+    </ul>
+
+    <div class="text-center mt-10 bg-saffron-100 border border-gold-300 rounded-xl p-6 max-w-3xl mx-auto">
+      <p class="text-lg text-maroon-900 font-semibold">3 या अधिक लक्षण मिल रहे हैं?</p>
+      <p class="text-sm text-ink-700 mt-1">पंडित जी से कुंडली दिखवाइए — काल सर्प दोष है या नहीं, और कौनसा प्रकार है, सब स्पष्ट हो जाएगा।</p>
+      <a href={SITE.phone.tel} data-source="symptoms-cta" class="btn-call mt-4">
+        <Icon name="mdi:phone" class="w-5 h-5" />
+        निःशुल्क परामर्श · {SITE.phone.display}
+      </a>
+    </div>
+  </div>
+</section>

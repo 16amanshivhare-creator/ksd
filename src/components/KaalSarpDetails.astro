@@ -1,0 +1,53 @@
+---
+const types = [
+  { n: 1, name: 'Anant Kaal Sarp Dosh', nameHi: 'अनंत काल सर्प दोष', placement: 'राहु — प्रथम भाव, केतु — सप्तम भाव', effect: 'विवाह में देरी, साझेदारी में दिक्कत, अहं का टकराव। रिश्तों पर गहरा प्रभाव।' },
+  { n: 2, name: 'Kulik Kaal Sarp Dosh', nameHi: 'कुलिक काल सर्प दोष', placement: 'राहु — द्वितीय भाव, केतु — अष्टम भाव', effect: 'पारिवारिक कलह, वाणी संबंधी समस्याएँ, अचानक धन हानि।' },
+  { n: 3, name: 'Vasuki Kaal Sarp Dosh', nameHi: 'वासुकी काल सर्प दोष', placement: 'राहु — तृतीय भाव, केतु — नवम भाव', effect: 'भाई-बहन से मतभेद, साहस की कमी, पिता या गुरु से तनाव।' },
+  { n: 4, name: 'Shankhapal Kaal Sarp Dosh', nameHi: 'शंखपाल काल सर्प दोष', placement: 'राहु — चतुर्थ भाव, केतु — दशम भाव', effect: 'घरेलू अशांति, सम्पत्ति विवाद, करियर में ठहराव, माता का स्वास्थ्य।' },
+  { n: 5, name: 'Padma Kaal Sarp Dosh', nameHi: 'पद्म काल सर्प दोष', placement: 'राहु — पंचम भाव, केतु — एकादश भाव', effect: 'शिक्षा में बाधा, संतान संबंधी समस्या, प्रेम में निराशा।' },
+  { n: 6, name: 'Mahapadma Kaal Sarp Dosh', nameHi: 'महापद्म काल सर्प दोष', placement: 'राहु — षष्ठ भाव, केतु — द्वादश भाव', effect: 'पुरानी बीमारियाँ, शत्रु, कर्ज, अनिद्रा, विदेश यात्रा में बाधा।' },
+  { n: 7, name: 'Takshak Kaal Sarp Dosh', nameHi: 'तक्षक काल सर्प दोष', placement: 'राहु — सप्तम भाव, केतु — प्रथम भाव', effect: 'दाम्पत्य कलह, साझेदारी में असफलता, आत्म-विश्वास की कमी।' },
+  { n: 8, name: 'Karkotak Kaal Sarp Dosh', nameHi: 'कर्कोटक काल सर्प दोष', placement: 'राहु — अष्टम भाव, केतु — द्वितीय भाव', effect: 'अचानक आपदा, उत्तराधिकार विवाद, दुर्घटनाएँ, गुप्त शत्रु।' },
+  { n: 9, name: 'Shankhachud Kaal Sarp Dosh', nameHi: 'शंखचूड़ काल सर्प दोष', placement: 'राहु — नवम भाव, केतु — तृतीय भाव', effect: 'धर्म पर संदेह, पिता से समस्या, लंबी यात्राओं में बाधा।' },
+  { n: 10, name: 'Ghatak Kaal Sarp Dosh', nameHi: 'घातक काल सर्प दोष', placement: 'राहु — दशम भाव, केतु — चतुर्थ भाव', effect: 'करियर में बाधा, व्यवसायिक असफलता, उच्च अधिकारियों से तनाव।' },
+  { n: 11, name: 'Vishdhar Kaal Sarp Dosh', nameHi: 'विषधर काल सर्प दोष', placement: 'राहु — एकादश भाव, केतु — पंचम भाव', effect: 'मित्रों से धोखा, आय में हानि, संतान संबंधी चिंता, सामाजिक अलगाव।' },
+  { n: 12, name: 'Sheshnaag Kaal Sarp Dosh', nameHi: 'शेषनाग काल सर्प दोष', placement: 'राहु — द्वादश भाव, केतु — षष्ठ भाव', effect: 'विदेश में समस्याएँ, अस्पताल में भर्ती, गुप्त शत्रु, अनावश्यक व्यय।' }
+];
+---
+
+<section class="py-16 bg-gradient-to-b from-cream-50 to-white">
+  <div class="container-wide">
+    <header class="text-center max-w-3xl mx-auto mb-10">
+      <p class="badge-trust mb-3">12 प्रकार · 12 Types Detailed</p>
+      <h2>काल सर्प दोष के 12 प्रकार — विस्तार में<span class="block text-xl text-saffron-700 font-display font-medium mt-1">The 12 Types of Kaal Sarp Dosh — Detailed Guide</span></h2>
+      <p class="text-ink-700 mt-3 leading-relaxed">
+        आपकी कुंडली में राहु और केतु की स्थिति के अनुसार काल सर्प दोष का प्रकार बदलता है। हर प्रकार का अपना प्रभाव और उपाय होता है — पंडित जी आपकी कुंडली देखकर सही पूजा बताएँगे।
+        <span class="block mt-1 text-sm italic">Based on the placement of Rahu and Ketu in your birth chart, the type of Kaal Sarp Dosh varies. Each type has a unique effect and specific remedy — Pandit Ji recommends the right puja after reviewing your kundli.</span>
+      </p>
+    </header>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      {types.map((t) => (
+        <article class="bg-white border border-gold-200 rounded-xl p-5 shadow-soft hover:border-saffron-400 transition-colors">
+          <header class="flex items-start gap-3 mb-3">
+            <span class="w-10 h-10 rounded-full bg-maroon-700 text-cream-50 font-display font-bold flex items-center justify-center shrink-0">{t.n}</span>
+            <div>
+              <h3 class="!text-maroon-900 !leading-tight text-lg">{t.nameHi}</h3>
+              <p class="text-xs text-saffron-700 font-semibold">{t.name}</p>
+            </div>
+          </header>
+          <dl class="space-y-2 text-sm">
+            <div>
+              <dt class="font-semibold text-ink-700 inline">स्थिति:</dt>
+              <dd class="text-ink-800 inline ml-1">{t.placement}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-ink-700 inline">प्रभाव:</dt>
+              <dd class="text-ink-800 inline ml-1">{t.effect}</dd>
+            </div>
+          </dl>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const reasons = [
+  { icon: 'mdi:temple-hindu', t: 'प्रामाणिक वैदिक विधि', tEn: 'Authentic Vedic Vidhi', d: 'शुद्ध संस्कृत मंत्र, कोई शॉर्टकट नहीं — संकल्प, जाप, हवन, तर्पण — प्राचीन शास्त्रोक्त पूर्ण विधि।', dEn: 'Pure Sanskrit mantras with zero shortcuts. Full Sankalp → Jaap → Hawan → Tarpan flow as per ancient shastra.' },
+  { icon: 'mdi:cash-check', t: 'पारदर्शी मूल्य', tEn: 'Transparent Pricing', d: '₹3,100 से शुरू — सब कुछ शामिल (सामग्री + दान-दक्षिणा)। कोई छुपा चार्ज नहीं, एडवांस की ज़रूरत नहीं।', dEn: '₹3,100 onwards — fully inclusive (samagri + dakshina). No hidden charges, no advance payment required.' },
+  { icon: 'mdi:account-tie', t: '15+ वर्षों का अनुभव', tEn: '15+ Years Experience', d: '5,000+ परिवारों ने करवाई पूजा — UP, राजस्थान, बिहार, दिल्ली, मुंबई, बंगलूरू सहित NRI ग्राहक भी।', dEn: '5,000+ families served across UP, Rajasthan, Bihar, Delhi, Mumbai, Bangalore — plus NRI clients globally.' },
+  { icon: 'mdi:calendar-clock', t: 'सही मुहूर्त निकालना', tEn: 'Correct Muhurat Selection', d: 'आपकी कुंडली के अनुसार शुभ मुहूर्त — नाग पंचमी, श्रावण सोमवार, अमावस्या विशेष।', dEn: 'Auspicious muhurat as per your kundli — Nag Panchami, Shravan Somvar, Amavasya specials calculated precisely.' },
+  { icon: 'mdi:video-outline', t: 'पूजा वीडियो + प्रसाद', tEn: 'Puja Video + Prasad Delivery', d: 'पूजा की पूरी वीडियो, संकल्प प्रमाण और प्रसाद आपके घर भेज दिया जाता है।', dEn: 'Full puja video, sankalp pramaan certificate, and prasad delivered to your home anywhere in India.' },
+  { icon: 'mdi:headset', t: 'पूजा के बाद सहायता', tEn: 'Post-Puja Follow-up', d: 'पूजा के बाद के नियम, सावधानियाँ और उपाय — पंडित जी का सीधा नंबर आपके पास।', dEn: 'Post-puja niyam, precautions, and ongoing guidance — direct WhatsApp access to Pandit Ji.' }
+];
+---
+
+<section class="py-16 bg-white">
+  <div class="container-wide">
+    <header class="text-center max-w-2xl mx-auto mb-10">
+      <p class="badge-trust mb-3">हमें क्यों चुनें · Why Choose Us</p>
+      <h2>काल सर्प दोष पूजा उज्जैन — हम क्यों सर्वोत्तम विकल्प हैं?<span class="block text-xl text-saffron-700 font-display font-medium mt-1">Why We're the Best Choice for Kaal Sarp Dosh Puja in Ujjain</span></h2>
+    </header>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {reasons.map((r) => (
+        <div class="bg-cream-50 border border-gold-200 rounded-xl p-6 shadow-soft hover:shadow-cta transition-shadow">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-saffron-400 to-maroon-700 text-white flex items-center justify-center mb-4">
+            <Icon name={r.icon} class="w-7 h-7" />
+          </div>
+          <h3 class="!text-maroon-900 !leading-tight">{r.t}</h3>
+          <p class="text-xs text-saffron-700 font-semibold mb-1">{r.tEn}</p>
+          <p class="text-sm text-ink-700 leading-relaxed">{r.d}</p>
+          <p class="text-xs text-ink-600 mt-1.5 leading-relaxed italic">{r.dEn}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

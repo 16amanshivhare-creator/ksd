@@ -1,0 +1,37 @@
+---
+/**
+ * Sveltia CMS admin panel — WordPress-like editor for content team.
+ * Auth: GitHub OAuth (or local backend via `npx decap-server` for dev).
+ * Config: public/admin/config.yml
+ */
+export const prerender = true;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>KSD Admin · Sveltia CMS</title>
+    <link rel="icon" href="/favicon.svg" />
+    <style>
+      body { font-family: system-ui, -apple-system, sans-serif; background: #fdf7e7; margin: 0; }
+      .loading { padding: 4rem 2rem; text-align: center; color: #882530; }
+      .loading h1 { font-size: 1.5rem; margin: 0 0 0.5rem; }
+      .loading p { color: #5a4030; font-size: 0.9rem; }
+      .loading code { background: #fbecc6; padding: 2px 6px; border-radius: 4px; }
+    </style>
+  </head>
+  <body>
+    <div class="loading" id="cms-loading">
+      <h1>लोड हो रहा है… Loading admin panel</h1>
+      <p>Sveltia CMS · GitHub OAuth login</p>
+      <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">
+        First time? Run <code>npx decap-server</code> in another terminal for local dev.
+      </p>
+    </div>
+    <!-- Sveltia CMS — modern UI fork of Decap CMS. Free, same config. -->
+    <script type="module" src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  </body>
+</html>

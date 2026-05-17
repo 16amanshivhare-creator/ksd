@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE } from '@data/site';
+
+/**
+ * Captures "kaal sarp dosh puja near me" geo-intent queries.
+ * Google geo-substitutes "near me" with user's city, so multi-city coverage = QS boost.
+ */
+const servingCities = [
+  'Delhi', 'Mumbai', 'Jaipur', 'Lucknow', 'Patna', 'Kanpur',
+  'Bhopal', 'Indore', 'Ahmedabad', 'Bangalore', 'Pune', 'Kolkata',
+  'Varanasi', 'Allahabad', 'Chandigarh', 'Hyderabad'
+];
+---
+
+<section class="py-12 bg-cream-100 border-y border-gold-200">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+      <div>
+        <p class="badge-trust mb-3">पूरे भारत में सेवा · Pan-India</p>
+        <h2>Kaal Sarp Dosh Puja Near Me<span class="block text-xl text-saffron-700 font-display font-medium mt-1">उज्जैन से देश-विदेश तक सम्पर्क</span></h2>
+        <p class="text-ink-700 mt-3 leading-relaxed">
+          आप कहीं भी हों — दिल्ली, मुंबई, बंगलूरू, या किसी भी शहर से — हम आपकी <strong>काल सर्प दोष पूजा उज्जैन</strong> में करवा सकते हैं। आपको बस उज्जैन आना है (वैदिक शास्त्र के अनुसार सर्वोत्तम) — या फिर <strong>ऑनलाइन पूजा</strong> भी उपलब्ध है आपके नाम और गोत्र से।
+        </p>
+        <p class="text-ink-600 mt-3 text-sm leading-relaxed italic">
+          Searching for "Kaal Sarp Dosh Puja near me"? Even if you live in Delhi, Mumbai, Bangalore, or any other city — we can perform your puja in Ujjain (the most auspicious location per Vedic shastra). For those unable to travel, we also offer <strong>online puja by your name and gotra</strong>, with full video recording sent to you.
+        </p>
+        <a href={SITE.phone.tel} data-source="near-me" class="btn-call mt-5">
+          <Icon name="mdi:phone-in-talk" class="w-5 h-5" />
+          पंडित जी से बात करें · {SITE.phone.display}
+        </a>
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-maroon-900 mb-3">यहाँ से ग्राहक आते हैं:</p>
+        <ul class="flex flex-wrap gap-2">
+          {servingCities.map((c) => (
+            <li class="bg-white border border-gold-200 rounded-full px-3 py-1.5 text-sm text-ink-800 font-medium">
+              <Icon name="mdi:map-marker-radius" class="w-4 h-4 inline text-saffron-700 mr-1" />
+              {c}
+            </li>
+          ))}
+        </ul>
+        <p class="text-xs text-ink-600 mt-3">+ NRI ग्राहक (USA, UK, UAE, Singapore, Canada, Australia)</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -2,14 +2,19 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Hero from '@components/Hero.astro';
 import TrustStrip from '@components/TrustStrip.astro';
+import KeywordVariants from '@components/KeywordVariants.astro';
+import Symptoms from '@components/Symptoms.astro';
 import PujaProcess from '@components/PujaProcess.astro';
-import KaalSarpTypes from '@components/KaalSarpTypes.astro';
+import KaalSarpDetails from '@components/KaalSarpDetails.astro';
+import Muhurats from '@components/Muhurats.astro';
+import NearMeBlock from '@components/NearMeBlock.astro';
+import WhyUs from '@components/WhyUs.astro';
 import Pricing from '@components/Pricing.astro';
 import Testimonials from '@components/Testimonials.astro';
 import FAQ from '@components/FAQ.astro';
 import { Icon } from 'astro-icon/components';
 import { SITE, PUJA_SERVICES } from '@data/site';
-import { serviceSchema, faqSchema, breadcrumbSchema } from '@lib/schema';
+import { serviceSchema, faqSchema, breadcrumbSchema, howToSchema, reviewItemsToAggregate, reviewSchema, organizationSchema, webPageSchema, eventMuhuratSchema } from '@lib/schema';
 import { getCollection } from 'astro:content';
 
 const faqItems = (await getCollection('faqs')).map((f) => ({
@@ -17,53 +22,98 @@ const faqItems = (await getCollection('faqs')).map((f) => ({
   a: f.data.answer
 }));
 
-const title = 'काल सर्प दोष पूजा उज्जैन | Pandit Ji · ₹3,100 से · Call 9424002309';
-const description = SITE.metaDescription;
+const reviews = (await getCollection('testimonials')).map((t) => t.data);
+const aggRating = reviewItemsToAggregate(reviews);
+
+const title = 'Kaal Sarp Dosh Puja Ujjain | काल सर्प दोष पूजा उज्जैन · ₹3,100 से · Call 9424002309';
+const description = 'Kaal Sarp Dosh Puja Ujjain — vidvan vaidik pandit ji se 12 prakar ka nivaran. Online booking, sahi muhurat, paardarshi ₹3,100 onwards. Ujjain mein Kaal Sarp Dosh Nivaran Puja. Call: +91 9424002309';
 
 const schemas = [
   serviceSchema({
-    name: 'Kaal Sarp Dosh Puja in Ujjain',
+    name: 'Kaal Sarp Dosh Puja Ujjain',
     nameHi: 'काल सर्प दोष पूजा उज्जैन',
-    description: 'Authentic Vedic Kaal Sarp Dosh Puja at Mangalnath Mandir, Ujjain. 12 prakar ka nivaran by experienced pandit.',
+    alternateNames: [
+      'Kaal Sarp Dosh Nivaran Puja Ujjain',
+      'Ujjain Kaal Sarp Dosh Puja',
+      'Kaal Sarp Yog Nivaran Puja Ujjain',
+      'Online Kaal Sarp Dosh Puja Booking Ujjain'
+    ],
+    description: 'Authentic Vedic Kaal Sarp Dosh Puja in Ujjain — 12 prakar ka nivaran by experienced pandit, Shipra tat. Online booking, transparent pricing.',
     slug: '/',
     price: SITE.pricing.starting
   }),
   faqSchema(faqItems),
-  breadcrumbSchema([{ name: 'Home', url: '/' }])
+  howToSchema(),
+  organizationSchema(),
+  webPageSchema({
+    title: 'Kaal Sarp Dosh Puja Ujjain',
+    description: 'Authentic Vedic Kaal Sarp Dosh Nivaran Puja in Ujjain — 12 prakar ka nivaran',
+    slug: '/',
+    speakable: ['h1', 'h2', '.prose-vedic p']
+  }),
+  breadcrumbSchema([{ name: 'Home', url: '/' }]),
+  ...eventMuhuratSchema([
+    { date: '2026-08-09', name: 'Nag Panchami', tithi: 'Shravan Shukla Panchami' },
+    { date: '2026-08-04', name: 'Shravan Somvar', tithi: 'Shravan Maas Somvar' },
+    { date: '2026-08-23', name: 'Shravan Amavasya', tithi: 'Pitru tarpan + KSD' },
+    { date: '2026-09-22', name: 'Sarva Pitru Amavasya', tithi: 'Mahalaya Amavasya' }
+  ]),
+  ...(aggRating ? [aggRating] : []),
+  ...reviewSchema(reviews)
 ];
 ---
 
 <BaseLayout title={title} description={description} schemas={schemas} language="hi">
   <Hero
-    h1="उज्जैन में काल सर्प दोष पूजा — प्रामाणिक वैदिक पंडित से"
-    subtitle="मंगलनाथ मंदिर के विद्वान पंडित द्वारा 12 प्रकार के काल सर्प दोष का निवारण। शुभ मुहूर्त, पूरी पूजा सामग्री, पारदर्शी ₹3,100 से — 500+ परिवारों की संतुष्टि।"
+    h1="Kaal Sarp Dosh Puja Ujjain — विद्वान वैदिक पंडित जी से"
+    subtitle="उज्जैन में काल सर्प दोष निवारण पूजा — 12 प्रकार का प्रामाणिक निवारण, सही मुहूर्त, ऑनलाइन बुकिंग, पारदर्शी ₹3,100 से। शिप्रा तट पर 5,000+ परिवारों की संतुष्टि।"
     image="/images/hero-ksd.jpg"
-    imageAlt="Kaal Sarp Dosh Puja at Mangalnath Mandir, Ujjain"
+    imageAlt="Kaal Sarp Dosh Puja Ujjain — Vedic Pandit Ji"
+    trustBadges={['Kaal Sarp Dosh Puja Ujjain', '15+ वर्ष अनुभव', '5,000+ परिवार', '5.0 ⭐ Google']}
   />
 
   <TrustStrip />
+
+  <KeywordVariants />
 
   <!-- Intro / What is KSD -->
   <section class="py-16 bg-white">
     <div class="container-narrow">
       <header class="text-center mb-8">
-        <p class="badge-trust mb-3">परिचय</p>
-        <h2>काल सर्प दोष क्या है?</h2>
+        <p class="badge-trust mb-3">परिचय · Introduction</p>
+        <h2>काल सर्प दोष क्या है — और उज्जैन क्यों? <span class="block text-xl text-saffron-700 font-display font-medium mt-1">What is Kaal Sarp Dosh — and Why Ujjain?</span></h2>
       </header>
       <div class="prose-vedic">
-        <p>
-          जब किसी व्यक्ति की कुंडली में सभी सात ग्रह — सूर्य, चंद्र, मंगल, बुध, गुरु, शुक्र और शनि — राहु और केतु के बीच आ जाते हैं, तब <strong>काल सर्प दोष</strong> बनता है। यह दोष जीवन में अनेक प्रकार की बाधाएँ ला सकता है — विवाह में देरी, संतान सुख में बाधा, आर्थिक उलझनें, बार-बार बीमारी, और मानसिक अशांति।
+        <p lang="hi">
+          जब किसी व्यक्ति की कुंडली में सभी सात ग्रह — <strong>सूर्य, चंद्र, मंगल, बुध, गुरु, शुक्र और शनि</strong> — राहु और केतु के बीच आ जाते हैं, तब <strong>काल सर्प दोष</strong> बनता है। यह दोष जीवन में अनेक प्रकार की बाधाएँ ला सकता है — विवाह में देरी, संतान सुख में बाधा, आर्थिक उलझनें, बार-बार बीमारी और मानसिक अशांति। कुंडली के अनुसार इसके <strong>12 प्रकार</strong> होते हैं।
         </p>
-        <p>
-          वैदिक शास्त्रों के अनुसार <strong>उज्जैन</strong> — जो कर्क रेखा पर स्थित है और जहाँ महाकालेश्वर ज्योतिर्लिंग एवं मंगलनाथ मंदिर (मंगल देव की जन्मस्थली) है — काल सर्प दोष निवारण के लिए सर्वोत्तम स्थान माना गया है। शिप्रा तट पर वैदिक विधि से सम्पन्न पूजा का प्रभाव विशेष फलदायी होता है।
+        <p lang="en" class="text-ink-700">
+          <strong>Kaal Sarp Dosh</strong> is formed when all seven planets — Sun, Moon, Mars, Mercury, Jupiter, Venus, and Saturn — are positioned between Rahu and Ketu in your birth chart. This astrological yog can cause delays in marriage, child-related challenges, financial obstacles, recurring illness, and mental restlessness. There are <strong>12 distinct types of Kaal Sarp Dosh</strong>, each with specific remedies.
+        </p>
+        <p lang="hi">
+          वैदिक शास्त्रों के अनुसार <strong>उज्जैन में काल सर्प दोष पूजा</strong> सर्वोत्तम मानी गई है। उज्जैन कर्क रेखा पर स्थित है और महाकालेश्वर ज्योतिर्लिंग की नगरी है — शिप्रा तट पर सम्पन्न <strong>काल सर्प दोष निवारण पूजा</strong> का प्रभाव विशेष फलदायी होता है।
+        </p>
+        <p lang="en" class="text-ink-700">
+          Per Vedic shastra, <strong>Kaal Sarp Dosh Puja in Ujjain</strong> is considered the most powerful remedy. Ujjain lies on the Tropic of Cancer and is home to Mahakaleshwar Jyotirlinga (one of the 12 sacred Jyotirlingas of India). A Kaal Sarp Dosh Nivaran Puja performed in this sacred city holds special significance — sought by devotees from across India and abroad.
+        </p>
+        <p lang="hi">
+          इसीलिए देश-विदेश से लोग <strong>उज्जैन में काल सर्प दोष पूजा</strong> करवाने आते हैं — UP, राजस्थान, बिहार, दिल्ली, मुंबई, बंगलूरू से अब तक <strong>5,000+ परिवार</strong> लाभ ले चुके हैं। NRI ग्राहक भी USA, UK, UAE, Singapore, Canada से सेवा ले चुके हैं।
         </p>
       </div>
     </div>
   </section>
 
-  <KaalSarpTypes />
+  <Symptoms />
+
+  <KaalSarpDetails />
+
+  <Muhurats />
 
   <PujaProcess />
+
+  <NearMeBlock />
+
+  <WhyUs />
 
   <Pricing />
 
@@ -97,14 +147,14 @@ const schemas = [
   <!-- Final CTA -->
   <section class="py-16 bg-gradient-to-br from-maroon-800 to-maroon-900 text-cream-50">
     <div class="container-narrow text-center">
-      <p class="badge-trust mb-4 bg-gold-200 text-gold-900">सहायता चाहिए?</p>
-      <h2 class="!text-cream-50 !leading-tight">पंडित जी से सीधे बात करें</h2>
-      <p class="text-cream-200 mt-3 text-lg">आपकी कुंडली के अनुसार सही पूजा और मुहूर्त जानें।<br />बिना किसी एडवांस के बुकिंग।</p>
+      <p class="badge-trust mb-4 bg-gold-200 text-gold-900">अभी बुक करें</p>
+      <h2 class="!text-cream-50 !leading-tight">पंडित जी से सीधे बात करें — काल सर्प दोष पूजा उज्जैन</h2>
+      <p class="text-cream-200 mt-3 text-lg">आपकी कुंडली के अनुसार सही पूजा और मुहूर्त जानें।<br />बिना किसी एडवांस के बुकिंग। ऑनलाइन + ऑफलाइन दोनों उपलब्ध।</p>
       <a href={SITE.phone.tel} data-source="final-cta" class="btn-call-lg mt-6 bg-gold-500 hover:bg-gold-600 text-maroon-900">
         <Icon name="mdi:phone-in-talk" class="w-6 h-6" />
         अभी कॉल करें · {SITE.phone.display}
       </a>
-      <p class="text-xs text-cream-300 mt-4">समय: {SITE.hours.open} – {SITE.hours.close} · सोम–रवि</p>
+      <p class="text-xs text-cream-300 mt-4">पंडित जी से सीधी बात · सोम–रवि · कोई एडवांस नहीं</p>
     </div>
   </section>
 </BaseLayout>

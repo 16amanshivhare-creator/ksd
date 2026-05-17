@@ -45,6 +45,11 @@ const localeMap = { hi: 'hi_IN', en: 'en_IN', mr: 'mr_IN' };
 <meta name="ICBM" content="23.2018, 75.7768" />
 <meta name="author" content={SITE.pandit.name} />
 
+<!-- Hreflang — bilingual audience -->
+<link rel="alternate" hreflang="hi-IN" href={pageUrl} />
+<link rel="alternate" hreflang="en-IN" href={pageUrl} />
+<link rel="alternate" hreflang="x-default" href={pageUrl} />
+
 <!-- Open Graph -->
 <meta property="og:type" content={type} />
 <meta property="og:url" content={pageUrl} />

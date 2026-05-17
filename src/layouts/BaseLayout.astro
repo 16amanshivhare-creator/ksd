@@ -35,14 +35,17 @@ const allSchemas = [localBusinessSchema(), ...(props.schemas || [])];
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
-    <!-- Fonts: Devanagari + Inter, preloaded -->
+    <!-- Fonts: Devanagari + Inter — preconnected + non-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap"
+    />
+    <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap"
-      media="print"
-      onload="this.media='all'"
     />
 
     <!-- ============================================================== -->
@@ -80,8 +83,26 @@ const allSchemas = [localBusinessSchema(), ...(props.schemas || [])];
           source: a.dataset.source || 'unknown'
         });
       }, { passive: true });
+
+      // Scroll-depth engagement signal (helps LP Experience quality score)
+      var marks = [25, 50, 75, 100], fired = {};
+      window.addEventListener('scroll', function () {
+        var h = document.documentElement;
+        var pct = Math.round(((h.scrollTop + window.innerHeight) / h.scrollHeight) * 100);
+        marks.forEach(function (m) {
+          if (pct >= m && !fired[m]) {
+            fired[m] = true;
+            gtag('event', 'scroll_depth', { percent: m });
+          }
+        });
+      }, { passive: true });
     </script>
-    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING.gaId}`}></script>
+    <script is:inline defer src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING.gaId}`}></script>
+
+    <!-- LCP image preload (home only — overridable per-page via slot) -->
+    {Astro.url.pathname === '/' && (
+      <link rel="preload" as="image" href="/images/hero-ksd.jpg" fetchpriority="high" />
+    )}
 
     <SEO {...props} schemas={allSchemas} />
   </head>

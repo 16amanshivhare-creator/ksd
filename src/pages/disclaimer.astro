@@ -1,0 +1,64 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { SITE } from '@data/site';
+import { breadcrumbSchema } from '@lib/schema';
+
+const title = 'Disclaimer — Kaal Sarp Dosh Puja Ujjain';
+const description = 'Disclaimer for religious and astrological services offered at Kaal Sarp Dosh Puja Ujjain. Read before booking.';
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Disclaimer', url: '/disclaimer/' }
+])];
+---
+
+<BaseLayout title={title} description={description} schemas={schemas}>
+  <section class="py-12 bg-gradient-to-br from-saffron-50 to-cream-100 border-b border-gold-200">
+    <div class="container-narrow text-center">
+      <p class="badge-trust mb-3">Legal</p>
+      <h1>Disclaimer</h1>
+      <p class="text-ink-600 mt-2">Last updated: 2026-05-17</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="container-narrow prose-vedic">
+      <h2>Religious & Spiritual Services Notice</h2>
+      <p>The services offered by Kaal Sarp Dosh Puja Ujjain — including Kaal Sarp Dosh Puja, Mangal Dosh Puja, Mahamrityunjay Jaap, and other Vedic rituals — are religious and spiritual services rooted in Hindu Vedic tradition.</p>
+
+      <h2>No Guaranteed Outcomes</h2>
+      <p>We <strong>do not guarantee specific results or outcomes</strong> from any puja or jaap. The effects of religious rituals depend on individual faith, karma, life circumstances, and divine will — none of which are within human control.</p>
+      <p>Any reference to "benefits," "improvement," or "remedy" in our content refers to traditional Vedic beliefs documented in ancient scriptures, not promised or measurable outcomes.</p>
+
+      <h2>Not a Substitute for Professional Advice</h2>
+      <p>Puja and jaap should <strong>not replace</strong>:</p>
+      <ul>
+        <li><strong>Medical treatment</strong> — for health issues, please consult a qualified doctor</li>
+        <li><strong>Legal advice</strong> — for legal matters, please consult a licensed lawyer</li>
+        <li><strong>Financial planning</strong> — for financial decisions, please consult a registered advisor</li>
+        <li><strong>Mental health care</strong> — for mental health concerns, please consult a licensed professional</li>
+      </ul>
+      <p>Our services are spiritual in nature and complementary to — not a replacement for — professional care.</p>
+
+      <h2>Astrological Content</h2>
+      <p>Blog articles, astrological insights, and remedies shared on this website are based on traditional Vedic astrology (Jyotish Shastra). They are presented for informational and cultural purposes. Astrology is not recognized as a science by the scientific community, and we make no claim of scientific validity.</p>
+
+      <h2>Pricing & Service Variations</h2>
+      <p>Puja pricing starts at ₹{SITE.pricing.starting.toLocaleString('en-IN')} and varies based on the type, scale, and samagri requirements. Final cost is communicated transparently before the puja begins. Please read our <a href="/terms-of-service/">Terms of Service</a> and <a href="/refund-policy/">Refund Policy</a> for complete details.</p>
+
+      <h2>Testimonials</h2>
+      <p>Customer testimonials shared on our website reflect <strong>individual experiences</strong>. Results and feelings expressed by individuals are personal and may not be representative of every customer's experience. Names of reviewers may be shortened or initialized for privacy reasons.</p>
+
+      <h2>External Links</h2>
+      <p>Our website may contain links to external resources (Wikipedia, scriptural texts, etc.). We are not responsible for the content, accuracy, or privacy practices of any external website.</p>
+
+      <h2>Faith & Personal Belief</h2>
+      <p>Vedic puja is rooted in Hindu religious tradition. Participation is voluntary and based on personal faith. We respect all religions and do not promote any belief system as superior.</p>
+
+      <h2>Contact</h2>
+      <p>For any questions about this disclaimer or our services, please call <a href={SITE.phone.tel}>{SITE.phone.display}</a>.</p>
+
+      <hr />
+      <p class="text-sm text-ink-600">By using this website or booking our services, you acknowledge that you have read, understood, and agreed to this Disclaimer along with our <a href="/privacy-policy/">Privacy Policy</a>, <a href="/terms-of-service/">Terms of Service</a>, and <a href="/refund-policy/">Refund Policy</a>.</p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE } from '@data/site';
+
+/**
+ * SEO-strategic section: surfaces high-intent search variants in body content
+ * so Google can match user queries to the page (per Ads HANDOFF — best variant
+ * `[ujjain kaal sarp dosh puja online booking]` ₹67 CPL).
+ */
+const variants = [
+  { phrase: 'Kaal Sarp Dosh Puja Ujjain', intent: 'Primary service' },
+  { phrase: 'Kaal Sarp Dosh Nivaran Puja Ujjain', intent: 'Nivaran specific' },
+  { phrase: 'Ujjain Kaal Sarp Dosh Puja', intent: 'Location-first search' },
+  { phrase: 'Kaal Sarp Yog Nivaran Puja Ujjain', intent: 'Yog vs Dosh variant' },
+  { phrase: 'Ujjain Mein Kaal Sarp Dosh Puja', intent: 'Hinglish search' },
+  { phrase: 'Online Kaal Sarp Dosh Puja Booking Ujjain', intent: 'Online booking' },
+  { phrase: 'Kaal Sarp Puja In Ujjain', intent: 'Short variant' },
+  { phrase: 'Best Pandit for Kaal Sarp Dosh Puja Ujjain', intent: 'Quality search' }
+];
+---
+
+<section class="py-14 bg-white border-y border-gold-200">
+  <div class="container-wide">
+    <header class="text-center max-w-3xl mx-auto mb-8">
+      <p class="badge-trust mb-3">हमारी सेवा · Our Service</p>
+      <h2>उज्जैन में काल सर्प दोष पूजा — हर प्रकार की सहायता<span class="block text-xl text-saffron-700 font-display font-medium mt-1">Kaal Sarp Dosh Puja Ujjain — All Variants Covered</span></h2>
+      <p class="text-ink-700 mt-3 leading-relaxed">
+        हम <strong>उज्जैन में काल सर्प दोष पूजा</strong> की सम्पूर्ण व्यवस्था करते हैं — चाहे आप <strong>Kaal Sarp Dosh Nivaran Puja Ujjain</strong> के लिए आ रहे हों, या <strong>काल सर्प योग</strong> का उपाय ढूँढ रहे हों। पंडित जी 15+ वर्षों के अनुभव के साथ वैदिक विधि से पूजा सम्पन्न करते हैं।
+        <span class="block mt-2 italic text-sm">We handle every variation of Kaal Sarp Dosh Puja in Ujjain — whether you're searching for nivaran puja, dosh remedy, or yog removal. Pandit Ji performs authentic Vedic rituals with 15+ years of experience.</span>
+      </p>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-5xl mx-auto">
+      {variants.map((v) => (
+        <li class="flex items-start gap-2.5 bg-saffron-50 border border-gold-200 rounded-lg p-3 hover:border-maroon-400 transition-colors">
+          <Icon name="mdi:check-decagram" class="w-5 h-5 text-saffron-700 shrink-0 mt-0.5" />
+          <div>
+            <p class="font-semibold text-maroon-900 text-sm leading-snug">{v.phrase}</p>
+            <p class="text-xs text-ink-600 mt-0.5">{v.intent}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <p class="text-center text-sm text-ink-700 mt-8 max-w-3xl mx-auto leading-relaxed">
+      आप चाहे <strong>"Kaal Sarp Dosh Puja Ujjain"</strong> खोजें, <strong>"उज्जैन काल सर्प दोष निवारण"</strong>, या <strong>"online Kaal Sarp Dosh puja booking"</strong> — पंडित जी आपकी कुंडली, गोत्र और दोष के प्रकार के अनुसार सही पूजा बताएँगे। कोई एडवांस नहीं, पारदर्शी ₹3,100 से।
+    </p>
+
+    <div class="text-center mt-6">
+      <a href={SITE.phone.tel} data-source="keyword-variants" class="btn-call-lg">
+        <Icon name="mdi:phone-in-talk" class="w-6 h-6" />
+        अभी कॉल करें · {SITE.phone.display}
+      </a>
+    </div>
+  </div>
+</section>
