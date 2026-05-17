@@ -35,18 +35,21 @@ const allSchemas = [localBusinessSchema(), ...(props.schemas || [])];
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
-    <!-- Fonts: Devanagari + Inter — preconnected + non-blocking -->
+    <!-- Fonts: PERF OPTIMIZED — 4 weights only (was 11) + async load via media trick -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap"
-    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap"
+      />
+    </noscript>
 
     <!-- ============================================================== -->
     <!-- GOOGLE ADS CONVERSION — SOLE SOURCE (per Ads HANDOFF 2026-05-10) -->
@@ -54,15 +57,39 @@ const allSchemas = [localBusinessSchema(), ...(props.schemas || [])];
     <!-- Re-fire dedup via transaction_id.                                -->
     <!-- ============================================================== -->
     <script is:inline define:vars={{ ADS: TRACKING.adsId, GA: TRACKING.gaId, LABEL: TRACKING.callConvLabel, PREFIX: TRACKING.txnIdPrefix, PHONE: SITE.phone.raw }}>
+      // PERF: gtag init only — no external JS load until first interaction
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
       window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', GA, { send_page_view: true });
-      if (ADS && ADS.indexOf('XXX') === -1) gtag('config', ADS);
+
+      var ADS_VALID = ADS && ADS.indexOf('XXX') === -1;
+      var GA_VALID  = GA  && GA.indexOf('XXX')  === -1;
+      var LABEL_VALID = LABEL && LABEL.indexOf('XXX') === -1;
+
+      // Lazy-load gtag.js only after user interacts (saves ~50 KB on initial LCP)
+      var gtagLoaded = false;
+      function loadGtag() {
+        if (gtagLoaded) return;
+        gtagLoaded = true;
+        var tagId = ADS_VALID ? ADS : (GA_VALID ? GA : null);
+        if (!tagId) return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + tagId;
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        if (GA_VALID)  gtag('config', GA,  { send_page_view: true });
+        if (ADS_VALID) gtag('config', ADS);
+      }
+      // Load gtag on first interaction (click/scroll/touch) — Google's recommended LCP optimization
+      ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function(ev){
+        window.addEventListener(ev, loadGtag, { once: true, passive: true });
+      });
+      // Failsafe: load after 3s idle if no interaction
+      setTimeout(loadGtag, 3000);
 
       window.__ksdFireCallConv = function () {
-        if (!LABEL || LABEL.indexOf('XXX') !== -1) return;
+        if (!LABEL_VALID) return;
         var txn = PREFIX + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
         gtag('event', 'conversion', {
           send_to: ADS + '/' + LABEL,
@@ -77,6 +104,7 @@ const allSchemas = [localBusinessSchema(), ...(props.schemas || [])];
         if (a.dataset.tracked === '1') return;
         a.dataset.tracked = '1';
         setTimeout(function(){ a.dataset.tracked = '0'; }, 30000);
+        loadGtag();
         window.__ksdFireCallConv();
         gtag('event', 'phone_call', {
           phone_number: PHONE,
@@ -84,9 +112,9 @@ const allSchemas = [localBusinessSchema(), ...(props.schemas || [])];
         });
       }, { passive: true });
 
-      // Scroll-depth engagement signal (helps LP Experience quality score)
-      var marks = [25, 50, 75, 100], fired = {};
-      window.addEventListener('scroll', function () {
+      // PERF: rAF-throttled scroll depth (was firing on EVERY scroll event = main-thread killer)
+      var marks = [25, 50, 75, 100], fired = {}, scrollTicking = false;
+      function checkDepth() {
         var h = document.documentElement;
         var pct = Math.round(((h.scrollTop + window.innerHeight) / h.scrollHeight) * 100);
         marks.forEach(function (m) {
@@ -95,13 +123,18 @@ const allSchemas = [localBusinessSchema(), ...(props.schemas || [])];
             gtag('event', 'scroll_depth', { percent: m });
           }
         });
+        scrollTicking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(checkDepth);
       }, { passive: true });
     </script>
-    <script is:inline defer src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING.gaId}`}></script>
 
-    <!-- LCP image preload (home only — overridable per-page via slot) -->
+    <!-- LCP image preload (home only) — WebP first (124 KB vs JPG 160 KB) -->
     {Astro.url.pathname === '/' && (
-      <link rel="preload" as="image" href="/images/hero-ksd.jpg" fetchpriority="high" />
+      <link rel="preload" as="image" href="/images/hero-ksd.webp" type="image/webp" fetchpriority="high" />
     )}
 
     <SEO {...props} schemas={allSchemas} />
