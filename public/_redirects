@@ -11,9 +11,6 @@
 # Author archive (WP) → blog index
 /author/*        /our-blog/                                 301
 
-# WP search → blog index
-/?s=*            /our-blog/                                 301
-
 # Tag archive (WP) → blog index (if any indexed)
 /tag/*           /our-blog/                                 301
 
