@@ -1,12 +1,14 @@
 import type { APIRoute } from 'astro';
 import { SITE } from '@data/site';
 
+/**
+ * robots.txt — Cloudflare AI Crawl Control may prepend a managed block.
+ * To avoid duplicate `User-agent: *` groups (invalid per Google spec),
+ * we only specify admin-disallow + sitemap. Universal Allow is implicit.
+ */
 export const GET: APIRoute = () => {
-  const body = `# robots.txt — ${SITE.name}
+  const body = `# Block admin UI for all crawlers
 User-agent: *
-Allow: /
-
-# Block admin UI
 Disallow: /admin/
 Disallow: /admin
 
