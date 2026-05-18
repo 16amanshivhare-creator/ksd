@@ -1,10 +1,13 @@
-/* PERF: Self-hosted fonts (zero Google Fonts network) — eliminates external DNS + render-block */
+/* PERF: Self-hosted fonts + size-adjust to ELIMINATE CLS from font swap */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url('/fonts/inter-400.woff2') format('woff2');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
 }
 @font-face {
   font-family: 'Inter';
@@ -12,6 +15,9 @@
   font-weight: 700;
   font-display: swap;
   src: url('/fonts/inter-700.woff2') format('woff2');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
 }
 @font-face {
   font-family: 'Noto Sans Devanagari';
@@ -55,7 +61,7 @@
 
   h1, h2, h3, h4 {
     @apply font-display text-maroon-900;
-    text-wrap: balance;
+    /* text-wrap: balance removed — costly on mobile, no visible benefit on Devanagari */
   }
 
   h1 { @apply text-3xl md:text-4xl lg:text-5xl leading-tight font-bold; }
@@ -63,7 +69,7 @@
   h3 { @apply text-xl md:text-2xl leading-snug font-semibold; }
   h4 { @apply text-lg md:text-xl font-semibold; }
 
-  p { @apply leading-relaxed; text-wrap: pretty; }
+  p { @apply leading-relaxed; /* text-wrap: pretty removed for perf */ }
 
   a { @apply transition-colors; }
 
