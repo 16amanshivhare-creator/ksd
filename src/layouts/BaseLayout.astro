@@ -35,21 +35,9 @@ const allSchemas = [localBusinessSchema(), ...(props.schemas || [])];
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
-    <!-- Fonts: PERF OPTIMIZED — 4 weights only (was 11) + async load via media trick -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap"
-      />
-    </noscript>
+    <!-- Fonts: SELF-HOSTED (zero external CDN). Preload critical 400 weights for LCP -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-400.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/notosans-devanagari-400.woff2" crossorigin />
 
     <!-- ============================================================== -->
     <!-- GOOGLE ADS CONVERSION — SOLE SOURCE (per Ads HANDOFF 2026-05-10) -->
