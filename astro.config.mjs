@@ -8,7 +8,7 @@ export default defineConfig({
   trailingSlash: 'always',
   build: {
     format: 'directory',
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always', // PERF: inline all CSS to eliminate render-blocking request (saves ~670ms)
     assets: '_astro'
   },
   compressHTML: true,
