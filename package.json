@@ -7,14 +7,17 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "extract": "node scripts/extract-wp-content.mjs",
     "images": "node scripts/optimize-images.mjs",
-    "cms": "decap-server"
+    "cms": "decap-server",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/cloudflare": "11",
     "@astrojs/mdx": "^3.1.9",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.2.1",
@@ -31,6 +34,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "decap-server": "^3.7.0",
     "node-fetch": "^3.3.2",
-    "turndown": "^7.2.0"
+    "turndown": "^7.2.0",
+    "wrangler": "^4.95.0"
   }
 }

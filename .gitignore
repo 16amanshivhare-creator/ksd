@@ -40,3 +40,9 @@ $RECYCLE.BIN/
 
 # Sveltia local backend
 .netlify-cms-proxy/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
