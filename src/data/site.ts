@@ -114,7 +114,7 @@ export const KAAL_SARP_TYPES = [
 
 /** Google Ads conversion config — locked, do NOT change without ads team. */
 export const TRACKING = {
-  gaId: 'G-XXXXXXX',          // TODO: Aman to provide GA4 (add later)
+  gaId: 'G-XMQNJT3FBL',       // ✅ GA4 added 2026-05-30 (Aman provided)
   adsId: 'AW-16735405036',    // ✅ Locked 2026-05-17 (shared with mangaldoshnivaranpujaujjain)
   callConvLabel: 'XXXXXX/XXXXXXXXXXX', // TODO: Aman to provide (Call +91 9424002309 conv action)
   txnIdPrefix: 'ksd_'
