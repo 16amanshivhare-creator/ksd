@@ -11,7 +11,11 @@
     "astro": "astro",
     "extract": "node scripts/extract-wp-content.mjs",
     "images": "node scripts/optimize-images.mjs",
-    "cms": "decap-server"
+    "cms": "decap-server",
+    "deploy": "astro build && wrangler pages deploy dist --project-name=$npm_package_config_cfProject --branch=main"
+  },
+  "config": {
+    "cfProject": "ksd"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -31,6 +35,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "decap-server": "^3.7.0",
     "node-fetch": "^3.3.2",
-    "turndown": "^7.2.0"
+    "turndown": "^7.2.0",
+    "wrangler": "^3.90.0"
   }
 }

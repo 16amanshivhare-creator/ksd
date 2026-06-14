@@ -1,0 +1,8 @@
+# Cloudflare Pages config for local `npm run deploy`.
+# ⚠️ `name` MUST match the EXISTING CF Pages project that serves
+#    kaalsarpdoshpujaujjain.com — otherwise a duplicate project is created
+#    and the live domain won't update.
+#    Verify with:  npx wrangler pages project list
+name = "ksd"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-06-01"
