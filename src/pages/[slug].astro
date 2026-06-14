@@ -38,10 +38,15 @@ const schemas = [
   ])
 ];
 
-const related = (await getCollection('blog', ({ data, slug: s }) => !data.draft && s !== post.slug))
-  .filter((p) => p.data.category === post.data.category)
-  .sort((a, b) => +b.data.pubDate - +a.data.pubDate)
-  .slice(0, 3);
+// Internal-link funnel: KSD posts cross-link within the cluster; generic blog
+// posts surface the KSD money cluster so their traffic + internal PageRank flow
+// to the commercial pages instead of dead-ending in generic astrology content.
+const _others = (await getCollection('blog', ({ data, slug: s }) => !data.draft && s !== post.slug));
+const _ksd = _others.filter((p) => p.data.category === 'kaal-sarp-dosh')
+  .sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+const _same = _others.filter((p) => p.data.category === post.data.category)
+  .sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+const related = (post.data.category === 'kaal-sarp-dosh' ? _same : _ksd).slice(0, 3);
 ---
 
 <BaseLayout
@@ -107,13 +112,18 @@ const related = (await getCollection('blog', ({ data, slug: s }) => !data.draft 
         <Icon name="mdi:phone-in-talk" class="w-6 h-6" />
         Call · {SITE.phone.display}
       </a>
+      <p class="text-cream-200 text-sm mt-5">
+        <a href="/" class="underline decoration-gold-400 underline-offset-4 hover:text-gold-300 font-semibold">काल सर्प दोष पूजा उज्जैन — बुकिंग, विधि व खर्च</a>
+        <span class="mx-2 opacity-50">·</span>
+        <a href="/our-pujas/" class="underline decoration-gold-400 underline-offset-4 hover:text-gold-300 font-semibold">सभी पूजाएँ देखें</a>
+      </p>
     </div>
   </section>
 
   {related.length > 0 && (
     <section class="py-12 bg-cream-100">
       <div class="container-wide">
-        <h2 class="text-center mb-8">सम्बंधित लेख</h2>
+        <h2 class="text-center mb-8">{post.data.category === 'kaal-sarp-dosh' ? 'सम्बंधित लेख' : 'काल सर्प दोष पूजा — सम्बंधित जानकारी'}</h2>
         <div class="grid md:grid-cols-3 gap-5">
           {related.map((r) => (
             <a href={`/${r.slug}/`} class="block bg-white border border-gold-200 rounded-xl overflow-hidden shadow-soft hover:shadow-cta">
