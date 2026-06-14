@@ -12,10 +12,7 @@
     "extract": "node scripts/extract-wp-content.mjs",
     "images": "node scripts/optimize-images.mjs",
     "cms": "decap-server",
-    "deploy": "astro build && wrangler pages deploy dist --project-name=$npm_package_config_cfProject --branch=main"
-  },
-  "config": {
-    "cfProject": "ksd"
+    "deploy": "astro build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
