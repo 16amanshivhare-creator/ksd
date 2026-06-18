@@ -92,7 +92,7 @@ export const PUJA_SERVICES = [
     slug: '/mahamritunjaya-jaap-in-ujjain/',
     title: 'Mahamrityunjaya Jaap',
     titleHi: 'महामृत्युंजय जाप',
-    short: 'Aarogya · Aayu vriddhi · Sankat nivaran',
+    short: 'Aarogya-Aayu ki kamna · Sankat shanti jaap',
     price: 3100
   }
 ] as const;
