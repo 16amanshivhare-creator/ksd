@@ -9,6 +9,7 @@ const STATIC_PAGES = [
   { url: '/our-blog/', priority: 0.8, changefreq: 'daily' },
   { url: '/contact-us/', priority: 0.7, changefreq: 'monthly' },
   { url: '/customer-cabinet/', priority: 0.5, changefreq: 'monthly' },
+  { url: '/kaal-sarp-dosh-puja-in-ujjain/', priority: 1.0, changefreq: 'weekly' },
   { url: '/mangal-dosh-puja-in-ujjain/', priority: 0.9, changefreq: 'weekly' },
   { url: '/mahamritunjaya-jaap-in-ujjain/', priority: 0.9, changefreq: 'weekly' },
   { url: '/category/kaal-sarp-dosh/', priority: 0.7, changefreq: 'weekly' },

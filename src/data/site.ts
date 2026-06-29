@@ -75,7 +75,7 @@ export const NAV_PRIMARY = [
 
 export const PUJA_SERVICES = [
   {
-    slug: '/',
+    slug: '/kaal-sarp-dosh-puja-in-ujjain/',
     title: 'Kaal Sarp Dosh Puja Ujjain',
     titleHi: 'काल सर्प दोष पूजा उज्जैन',
     short: 'Kaal Sarp Dosh Nivaran · 12 prakar · Vedic vidhi · Online booking',

@@ -1,0 +1,221 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import TrustStrip from '@components/TrustStrip.astro';
+import PujaProcess from '@components/PujaProcess.astro';
+import Testimonials from '@components/Testimonials.astro';
+import FAQ from '@components/FAQ.astro';
+import { Icon } from 'astro-icon/components';
+import { SITE } from '@data/site';
+import { serviceSchema, faqSchema, breadcrumbSchema } from '@lib/schema';
+
+const title = 'Kaal Sarp Dosh Puja Ujjain — Vidvan Vaidik Pandit · ₹3,100 से';
+const description = 'Ujjain mein Kaal Sarp Dosh Nivaran Puja vidvan vaidik pandit dwara — Shipra tat par Mahakal nagri mein shastra-sammat Vedic shanti puja. 12 prakar ka Kaal Sarp Dosh, ₹3,100 से, samagri sahit. Call: +91 9424002309';
+
+const ksdFaqs = [
+  {
+    q: 'काल सर्प दोष क्या है?',
+    a: 'वैदिक ज्योतिष के अनुसार, जब जन्म कुंडली के सभी ग्रह राहु और केतु के बीच आ जाते हैं, तब काल सर्प दोष माना जाता है। मान्यता है कि यह दोष जीवन में बाधाओं, मानसिक अशांति, करियर-स्वास्थ्य संबंधी अड़चनों और वंशवृद्धि में देरी का कारण बन सकता है। शास्त्रों में इसकी शांति हेतु विशेष वैदिक पूजा का विधान है।'
+  },
+  {
+    q: 'काल सर्प दोष पूजा कहाँ करवानी चाहिए?',
+    a: 'उज्जैन — महाकालेश्वर ज्योतिर्लिंग की नगरी और शिप्रा तट — को काल सर्प दोष शांति पूजा के लिए शास्त्र-सम्मत एवं अत्यंत प्रभावी स्थान माना गया है। यहीं पास में नागचंद्रेश्वर मंदिर भी स्थित है, जो वर्ष में एक बार नाग पंचमी पर ही खुलता है। मान्यता है कि उज्जैन में सम्पन्न पूजा का विशेष आध्यात्मिक फल मिलता है।'
+  },
+  {
+    q: 'काल सर्प दोष पूजा का खर्च कितना है?',
+    a: 'हमारी काल सर्प दोष शांति पूजा ₹3,100 से शुरू है — संकल्प, नाग-नागिन प्रतिमा (चांदी/पारद), मंत्र जाप (राहु-केतु बीज मंत्र), हवन, सम्पूर्ण पूजा सामग्री और दान-दक्षिणा सहित। 12 प्रकार के काल सर्प दोष (अनंत, कुलिक, वासुकि, शंखपाल, पद्म, महापद्म, तक्षक, कर्कोटक, शंखचूड़, घातक, विषधर, शेषनाग) के अनुसार सटीक विधि और मूल्य फोन पर बताया जाता है।'
+  },
+  {
+    q: 'काल सर्प दोष पूजा का शुभ मुहूर्त क्या है?',
+    a: 'काल सर्प दोष शांति पूजा के लिए सर्वोत्तम मुहूर्त: नाग पंचमी, श्रावण मास के सोमवार, अमावस्या, पंचमी तिथि, राहु काल के विपरीत समय। पंचांग के अनुसार आपके जन्म नक्षत्र देखकर पंडित जी सटीक मुहूर्त निर्धारित करते हैं।'
+  },
+  {
+    q: 'पूजा कितनी देर चलती है?',
+    a: 'सम्पूर्ण काल सर्प दोष शांति पूजा सामान्यतः 3 से 5 घंटे की होती है — संकल्प, गोत्र पूजा, राहु-केतु मंत्र जाप (कम-से-कम 1,008 बार), नाग-नागिन प्रतिमा पूजन, हवन और पूर्णाहुति। यजमान की उपस्थिति में या अनुपस्थिति में (ऑनलाइन वीडियो के साथ) सम्पन्न की जा सकती है।'
+  },
+  {
+    q: 'क्या पूजा का वीडियो मिलता है?',
+    a: 'हाँ। पूरी पूजा का HD वीडियो + संकल्प प्रमाणपत्र + प्रसाद / पवित्र जल यजमान को कुरियर द्वारा भेजा जाता है। NRI / दूरस्थ यजमानों के लिए लाइव वीडियो विकल्प भी उपलब्ध है।'
+  },
+  {
+    q: 'क्या एक बार पूजा से सब ठीक हो जाएगा?',
+    a: 'पूजा एक शास्त्र-सम्मत अनुष्ठान है — यह श्रद्धा, भक्ति और शांति की कामना से किया जाता है। मान्यता के अनुसार यह दोष की आध्यात्मिक शांति हेतु की जाती है। कुंडली के अनुसार पंडित जी कभी-कभी 3 बार (हर 6 या 12 महीने में) पूजा की सलाह देते हैं। हम कोई गारंटी या चमत्कारी दावा नहीं करते — शास्त्र विधि और श्रद्धा हमारा आधार है।'
+  },
+  {
+    q: 'क्या उज्जैन आना ज़रूरी है?',
+    a: 'नहीं। पूजा यजमान की उपस्थिति में या उनके नाम-गोत्र-संकल्प पर पंडित जी द्वारा सम्पन्न की जा सकती है। यजमान चाहें तो स्वयं उज्जैन पधारें (हम मंदिर दर्शन और रहने की जानकारी भी देते हैं), या घर बैठे संकल्प कर के पूजा करवा सकते हैं — दोनों विधियाँ शास्त्र-सम्मत हैं।'
+  }
+];
+
+const schemas = [
+  serviceSchema({
+    name: 'Kaal Sarp Dosh Puja in Ujjain',
+    nameHi: 'काल सर्प दोष पूजा उज्जैन',
+    alternateNames: ['Kalsarp Dosh Nivaran Puja', 'Rahu-Ketu Shanti Puja', 'काल सर्प योग शांति'],
+    description: 'Authentic Vedic Kaal Sarp Dosh Nivaran / Shanti Puja in Ujjain — 12 prakar ka Kaal Sarp Dosh anushthan, Shipra tat par Mahakal nagri mein.',
+    slug: '/kaal-sarp-dosh-puja-in-ujjain/',
+    price: SITE.pricing.starting
+  }),
+  faqSchema(ksdFaqs),
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Our Pujas', url: '/our-pujas/' },
+    { name: 'Kaal Sarp Dosh Puja', url: '/kaal-sarp-dosh-puja-in-ujjain/' }
+  ])
+];
+
+const kaalSarpTypes = [
+  { name: 'अनंत काल सर्प दोष', desc: '1st-7th भाव में राहु-केतु — मानसिक तनाव, साथी से अनबन' },
+  { name: 'कुलिक काल सर्प दोष', desc: '2nd-8th भाव में राहु-केतु — आर्थिक और स्वास्थ्य बाधा' },
+  { name: 'वासुकि काल सर्प दोष', desc: '3rd-9th भाव में राहु-केतु — भाई-बहन व भाग्य संबंधी' },
+  { name: 'शंखपाल काल सर्प दोष', desc: '4th-10th भाव में राहु-केतु — माता व करियर बाधा' },
+  { name: 'पद्म काल सर्प दोष', desc: '5th-11th भाव में राहु-केतु — संतान व विद्या बाधा' },
+  { name: 'महापद्म काल सर्प दोष', desc: '6th-12th भाव में राहु-केतु — शत्रु व व्यय संबंधी' },
+  { name: 'तक्षक काल सर्प दोष', desc: '7th-1st भाव में राहु-केतु — विवाह व साझेदारी बाधा' },
+  { name: 'कर्कोटक काल सर्प दोष', desc: '8th-2nd भाव में राहु-केतु — आयु व कुटुंब बाधा' },
+  { name: 'शंखचूड़ काल सर्प दोष', desc: '9th-3rd भाव में राहु-केतु — पिता व भाग्य बाधा' },
+  { name: 'घातक काल सर्प दोष', desc: '10th-4th भाव में राहु-केतु — कर्म व यश बाधा' },
+  { name: 'विषधर काल सर्प दोष', desc: '11th-5th भाव में राहु-केतु — लाभ व संतान बाधा' },
+  { name: 'शेषनाग काल सर्प दोष', desc: '12th-6th भाव में राहु-केतु — व्यय व शत्रु बाधा' }
+];
+
+const inclusions = [
+  'संकल्प + गोत्र पूजा',
+  'राहु-केतु बीज मंत्र जाप (1,008+)',
+  'नाग-नागिन चांदी प्रतिमा पूजन',
+  'विधिवत हवन व पूर्णाहुति',
+  'मंगल यंत्र / राहु यंत्र',
+  'सम्पूर्ण पूजा सामग्री',
+  'शुभ मुहूर्त निर्धारण',
+  'पूजा HD वीडियो + प्रसाद',
+  '12 प्रकार के दोष की पहचान',
+  'पंडित जी से प्रत्यक्ष परामर्श'
+];
+---
+
+<BaseLayout title={title} description={description} schemas={schemas} language="hi">
+  <Hero
+    h1="उज्जैन में काल सर्प दोष पूजा — विद्वान वैदिक पंडित से"
+    subtitle="महाकाल की नगरी उज्जैन — शिप्रा तट पर 12 प्रकार के काल सर्प दोष की शास्त्र-सम्मत शांति पूजा। राहु-केतु बीज मंत्र जाप, हवन व सम्पूर्ण सामग्री सहित — ₹3,100 से।"
+    image="/images/hero-kaal-sarp.jpg"
+    imageAlt="Kaal Sarp Dosh Puja in Ujjain — Vedic Pandit at Shipra Tat"
+    trustBadges={['काल सर्प दोष पूजा उज्जैन', '15+ वर्ष अनुभव', '5,000+ परिवार', 'शिप्रा तट · महाकाल नगरी']}
+  />
+
+  <TrustStrip />
+
+  <section class="py-16 bg-white">
+    <div class="container-narrow prose-vedic">
+      <h2>काल सर्प दोष क्या है?</h2>
+      <p>
+        वैदिक ज्योतिष के अनुसार, जब किसी की जन्म कुंडली के <strong>सभी ग्रह राहु और केतु के बीच</strong> आ जाते हैं, तब <strong>काल सर्प दोष / काल सर्प योग</strong> बनता है। मान्यता है कि यह दोष जीवन में मानसिक अशांति, करियर-स्वास्थ्य की अड़चनें, विवाह या वंशवृद्धि में देरी, और बार-बार सपनों में सर्प दिखाई देने जैसे अनुभवों का कारण बन सकता है।
+      </p>
+      <p>
+        शास्त्रों में इसकी शांति हेतु <strong>राहु-केतु बीज मंत्र जाप, हवन और नाग-नागिन प्रतिमा पूजन</strong> का विधान है — यह कोई "इलाज" या चमत्कारी उपाय नहीं, बल्कि श्रद्धा से किया जाने वाला शास्त्र-सम्मत आध्यात्मिक अनुष्ठान है।
+      </p>
+
+      <h3>उज्जैन में काल सर्प दोष पूजा का महत्व</h3>
+      <p>
+        उज्जैन को <strong>महाकालेश्वर ज्योतिर्लिंग की नगरी</strong> कहा जाता है — यहीं पास में <strong>नागचंद्रेश्वर मंदिर</strong> स्थित है, जो वर्ष में केवल एक बार नाग पंचमी पर ही दर्शनार्थ खुलता है। शिप्रा नदी के तट पर सम्पन्न वैदिक अनुष्ठानों का प्राचीन काल से विशेष महत्व माना गया है। प्राचीन परंपरा में उज्जैन कर्क रेखा पर स्थित होने के कारण यहाँ ज्योतिषीय गणनाओं का केंद्र रहा है।
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-cream-100">
+    <div class="container-narrow">
+      <h2 class="text-center mb-3">12 प्रकार के काल सर्प दोष</h2>
+      <p class="text-center text-ink-700 mb-10 text-sm sm:text-base">
+        कुंडली में राहु-केतु की स्थिति के अनुसार काल सर्प दोष 12 प्रकार का होता है। प्रत्येक के लिए विधि व मंत्र भिन्न हैं।
+      </p>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {kaalSarpTypes.map((t) => (
+          <li class="bg-white border border-gold-200 rounded-lg p-4">
+            <div class="flex items-start gap-2">
+              <Icon name="mdi:snake" class="w-5 h-5 text-saffron-600 shrink-0 mt-0.5" />
+              <div>
+                <strong class="block text-ink-900 text-sm">{t.name}</strong>
+                <span class="text-xs text-ink-700 leading-snug">{t.desc}</span>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p class="text-center text-xs text-ink-600 mt-6">
+        विस्तृत जानकारी:&nbsp;
+        <a href="/kaal-sarp-dosh-12-prakar/" class="text-saffron-700 underline">12 प्रकार के काल सर्प दोष — पूरी जानकारी</a>
+      </p>
+    </div>
+  </section>
+
+  <PujaProcess />
+
+  <section class="py-16 bg-white">
+    <div class="container-narrow">
+      <h2 class="text-center mb-8">पूजा में क्या शामिल है</h2>
+      <ul class="grid sm:grid-cols-2 gap-3">
+        {inclusions.map((f) => (
+          <li class="flex items-start gap-2 bg-cream-50 border border-gold-200 rounded-lg p-3">
+            <Icon name="mdi:check-decagram" class="w-5 h-5 text-saffron-600 shrink-0 mt-0.5" />
+            <span class="text-sm text-ink-800">{f}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="text-center mt-8 text-ink-700">
+        <strong>मूल्य ₹3,100 से शुरू</strong> · कुंडली विश्लेषण के बाद सटीक मूल्य फोन पर
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-cream-100">
+    <div class="container-narrow prose-vedic">
+      <h2>शुभ मुहूर्त — कब करवाएं?</h2>
+      <p>
+        काल सर्प दोष शांति पूजा के लिए शास्त्र-सम्मत मुहूर्त:
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li><strong>नाग पंचमी</strong> — सर्वोत्तम तिथि (श्रावण शुक्ल पंचमी)</li>
+        <li><strong>श्रावण मास के सोमवार</strong> — महाकाल नगरी में विशेष फलदायी</li>
+        <li><strong>अमावस्या / पंचमी तिथि</strong> — हर मास में उपयुक्त</li>
+        <li><strong>राहु-काल के विपरीत समय</strong> — दैनिक पंचांग अनुसार</li>
+        <li><strong>आपके जन्म नक्षत्र अनुसार</strong> — पंडित जी सटीक मुहूर्त निकालते हैं</li>
+      </ul>
+      <p class="mt-4">
+        विस्तार से देखें:&nbsp;
+        <a href="/ujjain-mein-kaalsarp-dosh-ki-puja-kab-hoti-hai/" class="text-saffron-700 underline">उज्जैन में काल सर्प दोष पूजा कब होती है</a>
+      </p>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <FAQ items={ksdFaqs} title="काल सर्प दोष पूजा — प्रश्नोत्तर" />
+
+  <section class="py-16 bg-white">
+    <div class="container-narrow prose-vedic">
+      <h2>अधिक जानकारी पढ़ें</h2>
+      <ul class="list-disc pl-5 space-y-2 text-sm">
+        <li><a href="/kaal-sarp-dosh-kya-hai/" class="text-saffron-700 underline">काल सर्प दोष क्या है — विस्तृत जानकारी</a></li>
+        <li><a href="/kaal-sarp-dosh-ke-nuksaan-kya-hai/" class="text-saffron-700 underline">काल सर्प दोष के नुकसान</a></li>
+        <li><a href="/kaal-sarp-dosh-ke-upay/" class="text-saffron-700 underline">काल सर्प दोष के शास्त्र-सम्मत उपाय</a></li>
+        <li><a href="/kaal-sarp-dosh-puja-ujjain-cost/" class="text-saffron-700 underline">काल सर्प दोष पूजा उज्जैन में खर्च</a></li>
+        <li><a href="/kaal-sarp-dosh-ki-puja-kaha-hoti-hai/" class="text-saffron-700 underline">काल सर्प दोष पूजा कहाँ होती है</a></li>
+        <li><a href="/which-kaal-sarp-dosh-is-most-dangerous/" class="text-saffron-700 underline">कौन सा काल सर्प दोष सबसे प्रभावशाली है</a></li>
+        <li><a href="/kaalsarp-dosh-nivaran-mantra/" class="text-saffron-700 underline">काल सर्प दोष शांति मंत्र</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gradient-to-br from-maroon-800 to-maroon-900 text-cream-50">
+    <div class="container-narrow text-center">
+      <h2 class="!text-cream-50">काल सर्प दोष पूजा बुक करें</h2>
+      <p class="text-cream-200 mt-3">पंडित जी से सीधे बात — आपकी कुंडली के अनुसार दोष की पहचान, मुहूर्त, सटीक मूल्य व विधि।</p>
+      <a href={SITE.phone.tel} data-source="ksd-service-cta" class="btn-call-lg mt-6 bg-gold-500 hover:bg-gold-600 text-maroon-900">
+        <Icon name="mdi:phone-in-talk" class="w-6 h-6" />
+        Call · {SITE.phone.display}
+      </a>
+      <p class="text-cream-300 text-xs mt-4">
+        ₹3,100 से शुरू · 15+ वर्ष अनुभव · 5,000+ परिवार · शिप्रा तट · महाकाल नगरी
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -311,3 +311,13 @@ USA, UK, Canada, Australia, Singapore — विदेश में बसे �
 **Website:** [kaalsarpdoshpujaujjain.com](https://kaalsarpdoshpujaujjain.com/)
 
 *यह सब परंपरागत वैदिक धार्मिक मार्गदर्शन है। हर कुंडली का context अलग है — व्यक्तिगत consultation आवश्यक।*
+
+---
+
+### 🐍 उज्जैन में काल सर्प दोष शांति पूजा बुक करें
+
+महाकाल की नगरी **उज्जैन** के अनुभवी पंडित जी द्वारा 12 प्रकार के काल सर्प दोष की शास्त्र-सम्मत **राहु-केतु शांति पूजा** — सम्पूर्ण विधि, नाग-नागिन प्रतिमा, हवन व सामग्री सहित।
+
+👉 **[काल सर्प दोष पूजा उज्जैन — पूरी जानकारी देखें →](https://kaalsarpdoshpujaujjain.com/kaal-sarp-dosh-puja-in-ujjain/)** &nbsp;·&nbsp; **[बुकिंग / पंडित जी से बात करें →](https://kaalsarpdoshpujaujjain.com/contact-us/)**
+
+₹3,100 से · 15+ वर्ष अनुभव · 5,000+ परिवार · शिप्रा तट

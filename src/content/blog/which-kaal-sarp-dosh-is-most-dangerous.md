@@ -212,3 +212,13 @@ draft: false
 📱 +91 – 9424002309
 📧  kalsarpdoshpujainujjain@gmail.com
 **Website:** [kaal sarp dosh puja ujjain](https://kaalsarpdoshpujaujjain.com/)
+
+---
+
+### 🐍 उज्जैन में काल सर्प दोष शांति पूजा बुक करें
+
+महाकाल की नगरी **उज्जैन** के अनुभवी पंडित जी द्वारा 12 प्रकार के काल सर्प दोष की शास्त्र-सम्मत **राहु-केतु शांति पूजा** — सम्पूर्ण विधि, नाग-नागिन प्रतिमा, हवन व सामग्री सहित।
+
+👉 **[काल सर्प दोष पूजा उज्जैन — पूरी जानकारी देखें →](https://kaalsarpdoshpujaujjain.com/kaal-sarp-dosh-puja-in-ujjain/)** &nbsp;·&nbsp; **[बुकिंग / पंडित जी से बात करें →](https://kaalsarpdoshpujaujjain.com/contact-us/)**
+
+₹3,100 से · 15+ वर्ष अनुभव · 5,000+ परिवार · शिप्रा तट

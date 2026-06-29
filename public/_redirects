@@ -23,3 +23,11 @@
 
 # Marathi URL-encoded post (skipped at build — re-add via CMS later)
 /कालसर्प-दोष-म्हणजे-काय/  /kaal-sarp-dosh-kya-hai/  301
+
+# 🔴 KSD core service page — Google was ranking these 404 variants (pos 27.5 + 28.8)
+# Redirect to new live service page at /kaal-sarp-dosh-puja-in-ujjain/ (added 2026-06-29).
+/kaal-sarp-dosh-puja-ujjain/      /kaal-sarp-dosh-puja-in-ujjain/   301
+/kaal-sarp-dosh-puja              /kaal-sarp-dosh-puja-in-ujjain/   301
+/kaal-sarp-dosh                   /kaal-sarp-dosh-puja-in-ujjain/   301
+/services/kaal-sarp-dosh-puja-ujjain  /kaal-sarp-dosh-puja-in-ujjain/   301
+/puja/kaal-sarp-dosh-puja-ujjain  /kaal-sarp-dosh-puja-in-ujjain/   301
