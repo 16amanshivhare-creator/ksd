@@ -7,7 +7,7 @@ image: "/images/blog/kaalasarp-dosh-door-karane-ka-1-raamabaan-upaay.jpg"
 imageAlt: "कालसर्प दोष शांति के लिए 1 प्रमुख वैदिक उपाय - जानें आसान तरीका"
 category: "kaal-sarp-dosh"
 tags: []
-focusKeyword: "कालसर्प दोष दूर करने का 1 रामबाण उपाय - जानें आसान और प्रभाव"
+focusKeyword: "कालसर्प दोष शांति का प्रमुख वैदिक उपाय"
 language: "mr"
 author: "Pandit Ji"
 legacyWpId: 2134

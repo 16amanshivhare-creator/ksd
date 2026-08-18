@@ -26,13 +26,16 @@ export function localBusinessSchema() {
       longitude: SITE.address.geo.lng
     },
     hasMap: SITE.gmb.profileUrl,
-    aggregateRating: SITE.gmb.reviewCount ? {
-      '@type': 'AggregateRating',
-      ratingValue: SITE.gmb.rating,
-      reviewCount: SITE.gmb.reviewCount,
-      bestRating: 5,
-      worstRating: 1
-    } : undefined,
+    // 2026-08-18 (ksd-011): site-wide aggregateRating REMOVED.
+    // It emitted a hardcoded 5.0 / 145 — the IDENTICAL number mangaldoshnivaranpujaujjain.com
+    // publishes for a DIFFERENT business at a DIFFERENT address, so at most one could be true
+    // and neither is verifiable (the puja GMB listings are not in the ByteFlow GBP account).
+    // It also contradicted the testimonial-derived AggregateRating on the homepage.
+    // Separately, a self-serving AggregateRating on your own LocalBusiness is not review-snippet
+    // eligible under Google's review-snippet guidelines. Measured 2026-08-18 via GSC
+    // `searchAppearance`: this property is served ZERO review snippets, so the markup was
+    // earning nothing while carrying manual-action risk. Do NOT re-add without real,
+    // verifiable, first-party review data.
     areaServed: [
       { '@type':'State', name:'Madhya Pradesh' },
       { '@type':'State', name:'Uttar Pradesh' },

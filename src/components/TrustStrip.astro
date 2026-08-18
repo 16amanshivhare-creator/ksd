@@ -5,7 +5,13 @@ import { SITE } from '@data/site';
 const items = [
   { icon: 'mdi:om', label: 'काल सर्प दोष विशेषज्ञ', sub: 'उज्जैन · वैदिक पंडित' },
   { icon: 'mdi:account-group', label: `${SITE.pandit.familiesServed} परिवार`, sub: 'सम्पन्न पूजाएँ' },
-  { icon: 'mdi:star', label: `${SITE.gmb.rating} ⭐ Google`, sub: `${SITE.gmb.reviewCount}+ रिव्यू` },
+  // 2026-08-18 (ksd-011): the visible "5.0 ⭐ Google / 145+ रिव्यू" badge was removed along with the
+  // JSON-LD aggregateRating. The 145 is hardcoded, unverifiable (the puja GMB listings are not in the
+  // ByteFlow GBP account), and is the IDENTICAL number mangaldoshnivaranpujaujjain.com shows for a
+  // different business at a different address. Removing the machine-readable claim while leaving the
+  // visible one would still be the same unverifiable claim. Replaced with a fact we can stand behind.
+  // To restore a rating here, put a REAL verified count in SITE.gmb and restore both halves together.
+  { icon: 'mdi:map-marker', label: 'मंगलनाथ · उज्जैन', sub: 'शास्त्रोक्त विधि से पूजा' },
   { icon: 'mdi:certificate', label: '15+ वर्षों का अनुभव', sub: 'प्रामाणिक वैदिक विधि' }
 ];
 ---

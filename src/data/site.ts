@@ -44,8 +44,12 @@ export const SITE = {
   },
 
   gmb: {
-    rating: 5.0,
-    reviewCount: 145,
+    // 2026-08-18 (ksd-011): rating/reviewCount NULLED — the 5.0/145 was hardcoded and unverifiable,
+    // and identical to the number MDP publishes for a different business. Both the JSON-LD
+    // aggregateRating and the visible TrustStrip badge that consumed these were removed.
+    // Put REAL numbers here only from this listing's own Google Business Profile.
+    rating: null,
+    reviewCount: null,
     profileUrl: 'https://www.google.com/maps/place/Kaal+Sarp+Dosh+Puja+Ujjain+%7C+Mahamrityunjaya+Jaap+Ujjain/@23.2222254,75.7861371,17z/data=!3m1!4b1!4m6!3m5!1s0x396377edb42be463:0xc670b32609cdcf3f!8m2!3d23.2222254!4d75.7861371!16s%2Fg%2F11sx21jkmx',
     cid: '0xc670b32609cdcf3f',
     placeId: 'g/11sx21jkmx',
