@@ -9,8 +9,29 @@ import { Icon } from 'astro-icon/components';
 import { SITE } from '@data/site';
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@lib/schema';
 
-const title = 'Kaal Sarp Dosh Puja Ujjain — Vidvan Vaidik Pandit · ₹3,100 से';
-const description = 'Ujjain mein Kaal Sarp Dosh Nivaran Puja vidvan vaidik pandit dwara — Shipra tat par Mahakal nagri mein shastra-sammat Vedic shanti puja. 12 prakar ka Kaal Sarp Dosh, ₹3,100 से, samagri sahit. Call: +91 9424002309';
+/**
+ * 2026-09-05 — RETARGETED. Measured, not guessed:
+ * This page earned ZERO impressions across 84 days of GSC data (2026-06-04 → 09-02)
+ * despite being indexed and internally linked from 50 of 51 pages. It is not starved
+ * of links — 73% of its vocabulary also sits on the homepage, and its old title
+ * ("Kaal Sarp Dosh Puja Ujjain — Vidvan Vaidik Pandit") targeted the exact head term
+ * the homepage already owns. Google picked the homepage and suppressed this as a
+ * near-duplicate.
+ *
+ * The homepage is deliberately NOT touched: it holds pos 14.9 on `kaal sarp dosh puja
+ * ujjain` and is still climbing (26.1 → 14.8 over the last two 28-day windows). This
+ * page carries zero traffic, so retargeting it risks nothing and is the only side of
+ * the pair where there is upside.
+ *
+ * New target = the TRANSACTIONAL terms the homepage ranks for but loses:
+ *   book kaal sarp dosh puja in ujjain        homepage pos 32.0
+ *   best pandit for kaal sarp puja in ujjain  homepage pos 41.8
+ *   kaal sarp dosh nivaran puja in ujjain     homepage pos 29.3 (14.3% CTR — real intent)
+ * `निवारण पूजा` is kept in the H1 on purpose: commit 4d2db4a records a pos 2 → 25
+ * regression caused by stripping exactly that service keyword. Do not remove it.
+ */
+const title = 'Book Kaal Sarp Dosh Nivaran Puja in Ujjain — Pandit Ji · ₹3,100 से';
+const description = 'Ujjain mein Kaal Sarp Dosh Nivaran Puja online book karein — vidvan vaidik pandit ji dwara shastra-sammat vidhi. Naam-gotra se sankalp, HD video, prasad courier, NRI ke liye live option. ₹3,100 से, samagri sahit. Call: +91 9424002309';
 
 const ksdFaqs = [
   {
@@ -95,8 +116,8 @@ const inclusions = [
 
 <BaseLayout title={title} description={description} schemas={schemas} language="hi">
   <Hero
-    h1="उज्जैन में काल सर्प दोष पूजा — विद्वान वैदिक पंडित से"
-    subtitle="महाकाल की नगरी उज्जैन — शिप्रा तट पर 12 प्रकार के काल सर्प दोष की शास्त्र-सम्मत शांति पूजा। राहु-केतु बीज मंत्र जाप, हवन व सम्पूर्ण सामग्री सहित — ₹3,100 से।"
+    h1="उज्जैन में काल सर्प दोष निवारण पूजा बुक करें — विद्वान वैदिक पंडित जी से"
+    subtitle="महाकाल की नगरी उज्जैन में 12 प्रकार के काल सर्प दोष की शास्त्र-सम्मत शांति पूजा — बुकिंग से प्रसाद तक की पूरी प्रक्रिया नीचे दी गई है। उज्जैन आना अनिवार्य नहीं; नाम-गोत्र संकल्प से भी पूजा सम्पन्न होती है। ₹3,100 से, सामग्री सहित।"
     image="/images/hero-kaal-sarp.jpg"
     imageAlt="Kaal Sarp Dosh Puja in Ujjain — Vedic Pandit at Shipra Tat"
     trustBadges={['काल सर्प दोष पूजा उज्जैन', '15+ वर्ष अनुभव', '5,000+ परिवार', 'शिप्रा तट · महाकाल नगरी']}
@@ -163,6 +184,59 @@ const inclusions = [
       <div class="text-center mt-8 text-ink-700">
         <strong>मूल्य ₹3,100 से शुरू</strong> · कुंडली विश्लेषण के बाद सटीक मूल्य फोन पर
       </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white border-y border-gold-200">
+    <div class="container-narrow prose-vedic">
+      <h2>पूजा कैसे बुक करें — पूरी प्रक्रिया</h2>
+      <p>
+        उज्जैन में काल सर्प दोष निवारण पूजा बुक करने के लिए आपको उज्जैन आना अनिवार्य नहीं है।
+        यजमान की उपस्थिति में और नाम-गोत्र संकल्प — दोनों विधियाँ शास्त्र-सम्मत हैं।
+        नीचे पूरी प्रक्रिया दी गई है।
+      </p>
+
+      <ol class="list-decimal pl-5 space-y-3 mt-4">
+        <li>
+          <strong>पंडित जी से बात</strong> — <a href={SITE.phone.tel} data-source="booking-steps" class="text-saffron-700 underline">{SITE.phone.display}</a> पर
+          कॉल करें। कुंडली में काल सर्प दोष है या नहीं, और 12 में से कौन-सा प्रकार है — यह पहले देखा जाता है।
+        </li>
+        <li>
+          <strong>जन्म विवरण</strong> — यजमान का नाम, गोत्र, जन्म तिथि, जन्म समय और जन्म स्थान।
+          गोत्र ज्ञात न हो तो <em>कश्यप</em> गोत्र से संकल्प कराया जाता है, जो शास्त्र-सम्मत है।
+        </li>
+        <li>
+          <strong>मुहूर्त निर्धारण</strong> — आपके जन्म नक्षत्र और पंचांग के अनुसार पंडित जी तिथि तय करते हैं।
+          अमावस्या, पंचमी और नाग पंचमी विशेष मानी जाती हैं।
+        </li>
+        <li>
+          <strong>विधि और मूल्य तय</strong> — दोष के प्रकार के अनुसार विधि तय होती है।
+          मूल्य ₹3,100 से आरम्भ; सटीक मूल्य कुंडली देखने के बाद फोन पर स्पष्ट बताया जाता है —
+          <a href="/kaal-sarp-dosh-puja-ujjain-cost/" class="text-saffron-700 underline">पूरी मूल्य सूची यहाँ देखें</a>।
+        </li>
+        <li>
+          <strong>पूजा सम्पन्न</strong> — संकल्प, गोत्र पूजा, राहु-केतु बीज मंत्र जाप, नाग-नागिन प्रतिमा पूजन,
+          हवन और पूर्णाहुति। सामान्यतः 3 से 5 घंटे।
+        </li>
+        <li>
+          <strong>यजमान को क्या मिलता है</strong> — पूरी पूजा का HD वीडियो, संकल्प प्रमाणपत्र,
+          और प्रसाद व पवित्र जल कुरियर द्वारा। दूरस्थ एवं NRI यजमानों के लिए लाइव वीडियो का विकल्प भी है।
+        </li>
+      </ol>
+
+      <h3>उज्जैन आए बिना पूजा — यह कैसे होती है</h3>
+      <p>
+        संकल्प यजमान के नाम, गोत्र और जन्म विवरण पर लिया जाता है, इसलिए यजमान की भौतिक उपस्थिति
+        अनिवार्य नहीं होती। यदि आप स्वयं उज्जैन पधारना चाहें तो पूजा में सम्मिलित हो सकते हैं —
+        मंदिर दर्शन और ठहरने की जानकारी भी हम दे देते हैं।
+      </p>
+
+      <h3>हम क्या दावा नहीं करते</h3>
+      <p>
+        यह पूजा एक शास्त्र-सम्मत अनुष्ठान है, जो श्रद्धा और शांति की कामना से किया जाता है।
+        हम किसी प्रकार की गारंटी, चमत्कार या रोग-निवारण का दावा नहीं करते। यह किसी चिकित्सा,
+        कानूनी या आर्थिक परामर्श का विकल्प नहीं है। हमारा आधार केवल शास्त्र विधि और यजमान की श्रद्धा है।
+      </p>
     </div>
   </section>
 
