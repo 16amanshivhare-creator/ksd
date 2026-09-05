@@ -17,7 +17,11 @@ const {
   image = '/images/hero-default.jpg',
   imageAlt = 'Kaal Sarp Dosh Puja Ujjain — Vedic Pandit Ji',
   primary = { label: 'अभी कॉल करें', href: SITE.phone.tel },
-  trustBadges = ['Kaal Sarp Dosh Puja Ujjain', '15+ Years Experience', '5,000+ Families', '5.0 ⭐ Google']
+  // 2026-09-05 (ksd-011 residual): the '5.0 ⭐ Google' badge was a HARDCODED literal here, so the
+  // 08-18 sweep — which nulled SITE.gmb.rating and removed the TrustStrip/JSON-LD halves — missed it
+  // and the same unverifiable rating stayed above the fold. Do not restore without a real, verified
+  // count from THIS listing's own Google Business Profile.
+  trustBadges = ['Kaal Sarp Dosh Puja Ujjain', '15+ Years Experience', '5,000+ Families', 'Ujjain · Mangalnath']
 } = Astro.props;
 ---
 
