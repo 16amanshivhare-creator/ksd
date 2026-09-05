@@ -5,8 +5,21 @@ import { SITE } from '@data/site';
 /**
  * Upcoming auspicious muhurat dates — adds Event schema markup + urgency CTR signal.
  * Update via /admin/ Sveltia CMS or src/data/muhurats.ts in future.
+ *
+ * 🔴 2026-09-05 — THIS LIST IS A BUILD-TIME SNAPSHOT AND IT GOES STALE SILENTLY.
+ * The site last built 2026-06-29. By 09-05 the live homepage — the page ranking for
+ * `kaal sarp dosh puja ujjain` — was advertising FIVE dates that had already passed
+ * ("नाग पंचमी · 9 August 2026 · 41 दिन" shown on 5 September), under a heading that
+ * says "आने वाले शुभ मुहूर्त", plus schema.org/Event markup with past startDates.
+ * Two separate falsehoods to a booking-intent visitor: the date, and the countdown.
+ *
+ * Fixed below by filtering at build time. That is the CORRECTNESS half only — it does
+ * NOT refill the list. Whoever adds dates here must take them from a real panchang
+ * (festival date != tithi-at-sunrise), never estimate them, and must extend the list
+ * well past the next build. If it empties, the section degrades to a CTA instead of
+ * lying.
  */
-const muhurats = [
+const ALL_MUHURATS = [
   { date: '2026-08-09', name: 'नाग पंचमी', tithi: 'श्रावण शुक्ल पंचमी', sig: '★★★★★ सर्वोत्तम — काल सर्प दोष के लिए वर्ष का सबसे शुभ दिन' },
   { date: '2026-08-04', name: 'श्रावण सोमवार (प्रथम)', tithi: 'श्रावण मास सोमवार', sig: '★★★★ अत्यंत शुभ — महामृत्युंजय + काल सर्प दोष दोनों के लिए' },
   { date: '2026-08-11', name: 'श्रावण सोमवार (द्वितीय)', tithi: 'श्रावण मास सोमवार', sig: '★★★★ अत्यंत शुभ दिवस' },
@@ -14,6 +27,11 @@ const muhurats = [
   { date: '2026-09-01', name: 'भाद्रपद अमावस्या', tithi: 'पितृ पक्ष आरंभ', sig: '★★★ पितृ दोष पूजा के लिए' },
   { date: '2026-09-22', name: 'सर्व पितृ अमावस्या', tithi: 'महालय अमावस्या', sig: '★★★★★ पितृ दोष का महापर्व' }
 ];
+
+// Build-time cut-off: keep only dates still ahead of us. Compared date-only (IST is
+// ahead of UTC, so a same-day muhurat must not be dropped by a timezone hour).
+const TODAY = new Date().toISOString().split('T')[0];
+const muhurats = ALL_MUHURATS.filter((m) => m.date >= TODAY).sort((a, b) => a.date.localeCompare(b.date));
 
 const formatDate = (d: string) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
 const daysAway = (d: string) => Math.max(0, Math.ceil((new Date(d).getTime() - Date.now()) / 86400000));
@@ -26,6 +44,13 @@ const daysAway = (d: string) => Math.max(0, Math.ceil((new Date(d).getTime() - D
       <h2>आने वाले शुभ मुहूर्त — काल सर्प दोष पूजा उज्जैन 2026<span class="block text-xl text-saffron-700 font-display font-medium mt-1">Upcoming Auspicious Dates — Kaal Sarp Dosh Puja Ujjain 2026</span></h2>
       <p class="text-ink-700 mt-3">पंडित जी आपकी कुंडली के अनुसार इनमें से सही दिन चुनेंगे।<span class="block italic text-sm">Pandit Ji will select the right date for you based on your kundli.</span></p>
     </header>
+
+    {muhurats.length === 0 && (
+      <div class="max-w-2xl mx-auto bg-white border-2 border-gold-200 rounded-xl p-6 text-center">
+        <p class="text-ink-800">अगले मुहूर्त की सूची अपडेट की जा रही है। आपकी कुंडली के अनुसार सही दिन पंडित जी स्वयं निकालकर बताएँगे।</p>
+        <p class="text-sm text-ink-600 mt-2 italic">The next muhurat list is being updated. Pandit Ji will calculate the right date from your kundli.</p>
+      </div>
+    )}
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
       {muhurats.map((m) => (
@@ -47,7 +72,7 @@ const daysAway = (d: string) => Math.max(0, Math.ceil((new Date(d).getTime() - D
     </div>
 
     <div class="text-center mt-8">
-      <p class="text-sm text-ink-700 mb-3">इन दिनों स्लॉट जल्दी भर जाते हैं — पहले से बुक कर लें</p>
+      <p class="text-sm text-ink-700 mb-3">{muhurats.length > 0 ? 'इन दिनों स्लॉट जल्दी भर जाते हैं — पहले से बुक कर लें' : 'अपनी कुंडली के अनुसार शुभ मुहूर्त जानने के लिए पंडित जी से बात करें'}</p>
       <a href={SITE.phone.tel} data-source="muhurats" class="btn-call-lg">
         <Icon name="mdi:phone-in-talk" class="w-6 h-6" />
         अभी बुक करें · {SITE.phone.display}
