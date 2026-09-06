@@ -40,3 +40,12 @@ $RECYCLE.BIN/
 
 # Sveltia local backend
 .netlify-cms-proxy/
+
+# Internal operating docs — this repo is public. These carry deploy runbooks,
+# infra facts and "why it broke" notes that do not belong on a public repo.
+# The files stay on disk; they are simply not published.
+HANDOFF.md
+HANDOFF_ARCHIVE.md
+LANDMINES.md
+DEPLOY.md
+.claude/
