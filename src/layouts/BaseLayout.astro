@@ -44,7 +44,7 @@ const allSchemas = [localBusinessSchema(), ...(props.schemas || [])];
     <!-- DO NOT add gtag('event','conversion') anywhere else.            -->
     <!-- Re-fire dedup via transaction_id.                                -->
     <!-- ============================================================== -->
-    <script is:inline define:vars={{ ADS: TRACKING.adsId, GA: TRACKING.gaId, LABEL: TRACKING.callConvLabel, PREFIX: TRACKING.txnIdPrefix, PHONE: SITE.phone.raw }}>
+    <script is:inline define:vars={{ ADS: TRACKING.adsId, GA: TRACKING.gaId, GA2: TRACKING.ga2Id, LABEL: TRACKING.callConvLabel, PREFIX: TRACKING.txnIdPrefix, PHONE: SITE.phone.raw }}>
       // PERF: gtag init only — no external JS load until first interaction
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
@@ -52,6 +52,7 @@ const allSchemas = [localBusinessSchema(), ...(props.schemas || [])];
 
       var ADS_VALID = ADS && ADS.indexOf('XXX') === -1;
       var GA_VALID  = GA  && GA.indexOf('XXX')  === -1;
+      var GA2_VALID = GA2 && GA2.indexOf('XXX') === -1;
       var LABEL_VALID = LABEL && LABEL.indexOf('XXX') === -1;
 
       // Lazy-load gtag.js only after user interacts (saves ~50 KB on initial LCP)
@@ -67,6 +68,8 @@ const allSchemas = [localBusinessSchema(), ...(props.schemas || [])];
         document.head.appendChild(s);
         gtag('js', new Date());
         if (GA_VALID)  gtag('config', GA,  { send_page_view: true });
+        // Second GA4 property (2026-09-13): same loader, one more config — never a second snippet.
+        if (GA2_VALID) gtag('config', GA2, { send_page_view: true });
         if (ADS_VALID) gtag('config', ADS);
       }
       // Load gtag on first interaction (click/scroll/touch) — Google's recommended LCP optimization
