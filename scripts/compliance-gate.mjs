@@ -34,16 +34,36 @@ function readable(html) {
     .replace(/\s+/g, ' ');
 }
 
+// A hit is excused only by the row's own options (see _options in the JSON):
+//   negatable      -> the sentence around it contains a negator
+//   skip_questions -> the sentence around it is a question
+const NEG = /\b(?:no|not|never|cannot|can't|don't|doesn't)\b|नहीं|न\s*ही/i;
+function sentenceAt(t, i, len) {
+  const stop = /[.।?!\n]/;
+  let a = i; while (a > 0 && !stop.test(t[a - 1])) a--;
+  let b = i + len; while (b < t.length && !stop.test(t[b])) b++;
+  return t.slice(a, Math.min(t.length, b + 1));
+}
+function excused(t, m, o = {}) {
+  const s = sentenceAt(t, m.index, m[0].length);
+  if (o.skip_questions && /\?\s*$/.test(s)) return true;
+  if (o.negatable && NEG.test(s)) return true;
+  return false;
+}
+
 const fails = [];
 const reviews = [];
 const files = walk(DIST).filter((f) => !f.includes('/admin/'));
 for (const f of files) {
   const t = readable(readFileSync(f, 'utf8'));
   const route = '/' + relative(DIST, f).replace(/index\.html$/, '').replace(/\.html$/, '/');
-  for (const [p, why] of C.content_block) {
+  for (const [p, why, o] of C.content_block) {
     const re = new RegExp(p, 'gi');
     let m;
-    while ((m = re.exec(t))) fails.push([route, why, t.slice(Math.max(0, m.index - 40), m.index + m[0].length + 30)]);
+    while ((m = re.exec(t))) {
+      if (excused(t, m, o)) continue;
+      fails.push([route, why, t.slice(Math.max(0, m.index - 40), m.index + m[0].length + 30)]);
+    }
   }
   for (const [p, why] of C.content_review || []) {
     const re = new RegExp(p, 'gi');

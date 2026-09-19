@@ -20,11 +20,17 @@
     ],
     [
       "(?<!cannot |can not |do not |don't |no )\\bguarantee\\w*",
-      "a guarantee"
+      "a guarantee",
+      {
+        "negatable": true
+      }
     ],
     [
       "(?<!कोई\\s)(?<!किसी प्रकार की\\s)गारंट(?![^।\\n]{0,80}नहीं)",
-      "a guarantee (Hindi; negated disclaimers excluded)"
+      "a guarantee (Hindi; negated disclaimers excluded)",
+      {
+        "negatable": true
+      }
     ],
     [
       "100\\s*%\\s*निवारण|शत-?प्रतिशत निवारण",
@@ -36,11 +42,19 @@
     ],
     [
       "VIP\\s*darshan|वीआईपी\\s*दर्शन|विशेष\\s*दर्शन",
-      "a VIP darshan claim"
+      "a VIP darshan claim",
+      {
+        "skip_questions": true,
+        "negatable": true
+      }
     ],
     [
       "भस्म आरती\\s*(बुकिंग|बुक)|(?<!no )(?:darshan|aarti)\\s+booking|दर्शन\\s*(बुकिंग|टिकट)",
-      "a darshan or Bhasma Aarti booking claim"
+      "a darshan or Bhasma Aarti booking claim",
+      {
+        "skip_questions": true,
+        "negatable": true
+      }
     ],
     [
       "t(?:i|ee|ir)rth[\\s-]*purohit|तीर्थ[\\s-]*पुरोहित|temple priest|मंदिर\\s*के\\s*पुजारी",
@@ -48,7 +62,10 @@
     ],
     [
       "puja\\s+(?:inside|at|in)\\s+(?:the\\s+)?Mahakal(?:eshwar)?|Mahakal(?:eshwar)?\\s+(?:temple\\s+)?puja|at\\s+Mahakaleshwar|Mahakaleshwar\\s+(?:Ujjain\\s+)?mein\\s+\\w+\\s+(?:puja|jaap|anushthan|mantra)|Mahakal\\s*kshetra\\s*mein|महाकाल(?:ेश्वर)?\\s*(?:ज्योतिर्लिंग\\s*|मंदिर\\s*)?(?:में|पर)\\s*(?:जाकर\\s*)?[^।\\n]{0,40}(?:पूजा|अनुष्ठान|अभिषेक|रुद्राभिषेक|जाप|खर्च|निवारण|करवा|कराए|कराएं)|(?:रुद्राभिषेक|अभिषेक)\\s*[—–-]?\\s*महाकाल(?:ेश्वर)?\\s*पर|महाकाल(?:ेश्वर)?\\s*का\\s*सान्निध्य\\s*आवश्यक|महाकाल\\s*की\\s*पूजा\\s*करा",
-      "a claim that puja is performed at Mahakaleshwar"
+      "a claim that puja is performed at Mahakaleshwar",
+      {
+        "skip_questions": true
+      }
     ],
     [
       "भीड़|bheed|\\bcrowd",
@@ -79,7 +96,7 @@
       "a city comparison — Ujjain only"
     ],
     [
-      "भस्म\\s*आरती\\s*(?:दर्शन)?\\s*\\(|भस्म\\s*आरती[^।\\n]{0,40}(?:अनुभव|शामिल|optional|package|पैकेज)|✅[^\\n]{0,20}भस्म\\s*आरती",
+      "भस्म\\s*आरती\\s*दर्शन\\s*\\(|भस्म\\s*आरती[^।\\n]{0,40}(?:का\\s*अद्वितीय\\s*अनुभव|शामिल|optional|package|पैकेज)|✅[^\\n]{0,20}भस्म\\s*आरती",
       "Bhasma Aarti framed as part of our package/itinerary — an access claim (rule: not even as a disclaimer)"
     ]
   ],
@@ -104,5 +121,6 @@
       "\\d[\\d,]*\\+?\\s*(?:परिवार|families|yajman|यजमान|reviews|समीक्षा)",
       "a count — must be real (no invented counts)"
     ]
-  ]
+  ],
+  "_options": "Optional 3rd element per content_block row. negatable: skip the hit if its sentence contains a negator (no/not/never/cannot/नहीं/न ही) — 'we do not make claims of guaranteed results' is the rule's own disclaimer. skip_questions: skip the hit if its sentence ends in '?' — an FAQ question ('महाकालेश्वर मंदिर में सीधे रुद्राभिषेक हो सकता है?') is not a claim; its answer is checked separately. Every consumer (KSD gate, BNA guard) must implement both."
 }
