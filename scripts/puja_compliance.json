@@ -1,0 +1,108 @@
+{
+  "_what": "Content rules for this site's build gate (scripts/compliance-gate.mjs). content_block fails the build; content_review is printed for a human.",
+  "_rule": "Describing a temple is allowed; offering it is not. No cure or guarantee claims. No comparison with other cities. No claims of darshan access, queues or crowds.",
+  "content_block": [
+    [
+      "रामबाण",
+      "a sure-shot remedy claim"
+    ],
+    [
+      "मुक्ति दिलाता है|मुक्ति दिलाने",
+      "the site asserting in its own voice that a ritual frees someone"
+    ],
+    [
+      "गंभीर बीमारियों से .{0,12}बचाव",
+      "a claim of protection from serious illness"
+    ],
+    [
+      "हर समस्या का हल",
+      "a claim to solve every problem"
+    ],
+    [
+      "(?<!cannot |can not |do not |don't |no )\\bguarantee\\w*",
+      "a guarantee"
+    ],
+    [
+      "(?<!कोई\\s)(?<!किसी प्रकार की\\s)गारंट(?![^।\\n]{0,80}नहीं)",
+      "a guarantee (Hindi; negated disclaimers excluded)"
+    ],
+    [
+      "100\\s*%\\s*निवारण|शत-?प्रतिशत निवारण",
+      "a 100% cure claim"
+    ],
+    [
+      "get rid of the dosh",
+      "an outcome guarantee"
+    ],
+    [
+      "VIP\\s*darshan|वीआईपी\\s*दर्शन|विशेष\\s*दर्शन",
+      "a VIP darshan claim"
+    ],
+    [
+      "भस्म आरती\\s*(बुकिंग|बुक)|(?<!no )(?:darshan|aarti)\\s+booking|दर्शन\\s*(बुकिंग|टिकट)",
+      "a darshan or Bhasma Aarti booking claim"
+    ],
+    [
+      "t(?:i|ee|ir)rth[\\s-]*purohit|तीर्थ[\\s-]*पुरोहित|temple priest|मंदिर\\s*के\\s*पुजारी",
+      "a tirth-purohit / temple-priest claim"
+    ],
+    [
+      "puja\\s+(?:inside|at|in)\\s+(?:the\\s+)?Mahakal(?:eshwar)?|Mahakal(?:eshwar)?\\s+(?:temple\\s+)?puja|at\\s+Mahakaleshwar|Mahakaleshwar\\s+(?:Ujjain\\s+)?mein\\s+\\w+\\s+(?:puja|jaap|anushthan|mantra)|Mahakal\\s*kshetra\\s*mein|महाकाल(?:ेश्वर)?\\s*(?:ज्योतिर्लिंग\\s*|मंदिर\\s*)?(?:में|पर)\\s*(?:जाकर\\s*)?[^।\\n]{0,40}(?:पूजा|अनुष्ठान|अभिषेक|रुद्राभिषेक|जाप|खर्च|निवारण|करवा|कराए|कराएं)|(?:रुद्राभिषेक|अभिषेक)\\s*[—–-]?\\s*महाकाल(?:ेश्वर)?\\s*पर|महाकाल(?:ेश्वर)?\\s*का\\s*सान्निध्य\\s*आवश्यक|महाकाल\\s*की\\s*पूजा\\s*करा",
+      "a claim that puja is performed at Mahakaleshwar"
+    ],
+    [
+      "भीड़|bheed|\\bcrowd",
+      "never 'bheed' — shraddhalu are not a crowd"
+    ],
+    [
+      "प्रतीक्षा\\s*समय|घंटे\\s*(?:की|का)\\s*(?:लाइन|इंतज़ार|इंतजार)|waiting\\s+time|\\bqueue\\b",
+      "a darshan queue / wait-time claim"
+    ],
+    [
+      "सबसे\\s*(?:अच्छे|बेहतरीन|श्रेष्ठ)\\s*पंडित|best\\s+pandit",
+      "ranking ourselves against other pandits"
+    ],
+    [
+      "वशीकरण|vashikaran|काला\\s*जादू|black\\s*magic",
+      "a service we do not offer"
+    ],
+    [
+      "आज\\s*(?:सुबह|शाम|दोपहर|रात)|ताज़ा\\s*खबर|ताजा\\s*खबर|ब्रेकिंग|\\bbreaking\\b|कल\\s*(?:सुबह|शाम)\\s*[^।]{0,30}(?:हुआ|हुई|हुए)",
+      "news voice in an evergreen blog"
+    ],
+    [
+      "देखें\\s*वीडियो|Video:|देखें\\s*तस्वीरें|नीचे\\s*देखें",
+      "promising media the article does not carry (BNA R12)"
+    ],
+    [
+      "(?:नासिक|त्र्यंबकेश्वर|काशी|वाराणसी|हरिद्वार|Nashik|Trimbakeshwar|Kashi|Varanasi|Haridwar)[^।\\n]{0,60}(?:से\\s*(?:बेहतर|अधिक|ज़्यादा|ज्यादा)|की\\s*तुलना|की\\s*बजाय|के\\s*बजाय|\\bvs\\b|better\\s+than|instead\\s+of)",
+      "a city comparison — Ujjain only"
+    ],
+    [
+      "भस्म\\s*आरती\\s*(?:दर्शन)?\\s*\\(|भस्म\\s*आरती[^।\\n]{0,40}(?:अनुभव|शामिल|optional|package|पैकेज)|✅[^\\n]{0,20}भस्म\\s*आरती",
+      "Bhasma Aarti framed as part of our package/itinerary — an access claim (rule: not even as a disclaimer)"
+    ]
+  ],
+  "content_review": [
+    [
+      "नासिक(?![\\u0900-\\u097F])|वाराणसी(?![\\u0900-\\u097F])|हरिद्वार(?![\\u0900-\\u097F])|\\bNashik\\b|\\bTrimbakeshwar\\b|\\bVaranasi\\b|\\bHaridwar\\b",
+      "another city named — fine in a list of where devotees come from, a violation if compared. Human reads it. (त्र्यंबक alone is the Mahamrityunjay mantra's name, not the city.)"
+    ],
+    [
+      "काशी(?![\\u0900-\\u097F])|\\bKashi\\b",
+      "Kashi mention — fine as an epithet (काशी के कोतवाल), a violation if it compares cities. Human reads it."
+    ],
+    [
+      "भस्म\\s*आरती|Bhasma\\s*Aarti",
+      "Bhasma Aarti — describing it is allowed, any booking/access framing is not. Human reads it."
+    ],
+    [
+      "महाकाल(?:ेश्वर)?\\s*के\\s*(?:समीप|सान्निध्य)|trustBadges[^\\n]*महाकाल",
+      "proximity/affiliation framing near Mahakaleshwar — softer than an offer, still implies access"
+    ],
+    [
+      "\\d[\\d,]*\\+?\\s*(?:परिवार|families|yajman|यजमान|reviews|समीक्षा)",
+      "a count — must be real (no invented counts)"
+    ]
+  ]
+}

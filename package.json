@@ -6,13 +6,14 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && node scripts/html-charset-headers.mjs",
+    "build": "astro build && node scripts/html-charset-headers.mjs && node scripts/compliance-gate.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "extract": "node scripts/extract-wp-content.mjs",
     "images": "node scripts/optimize-images.mjs",
     "cms": "decap-server",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "compliance": "node scripts/compliance-gate.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
