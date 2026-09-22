@@ -23,7 +23,7 @@ draft: false
 
 ## कालसर्प दोष क्या है? — संक्षिप्त परिचय
 
-ऐसा माना जाता है कि जब किसी व्यक्ति की कुंडली में [कालसर्प दोष](https://kaalsarpdoshpujaujjain.com/blog/kaal-sarp-dosh-kya-hai/) होता है — तो उसके जीवन में अनेक बाधाएँ आती हैं। इस दोष के प्रभाव से:
+ऐसा माना जाता है कि जब किसी व्यक्ति की कुंडली में [कालसर्प दोष](https://kaalsarpdoshpujaujjain.com/kaal-sarp-dosh-kya-hai/) होता है — तो उसके जीवन में अनेक बाधाएँ आती हैं। इस दोष के प्रभाव से:
 
 - महत्वपूर्ण कार्य समय पर पूरे नहीं हो पाते
 - घर में शुभ कार्यों में रुकावटें आती हैं
@@ -65,7 +65,7 @@ draft: false
 
 **लाभ:** यह मंत्र शिव का सबसे शक्तिशाली मंत्र है। यह न केवल कालसर्प दोष के प्रभाव को कम करता है, बल्कि मन को शांति, आत्मविश्वास और जीवन शक्ति भी प्रदान करता है। राहु-केतु की नकारात्मकता पर सीधा प्रभाव।
 
-विस्तृत [महामृत्युंजय मंत्र अर्थ और विधि](https://kaalsarpdoshpujaujjain.com/blog/mahamrityunjay-mantra-meaning-in-hindi/) यहाँ पढ़ें।
+विस्तृत [महामृत्युंजय मंत्र अर्थ और विधि](https://kaalsarpdoshpujaujjain.com/mahamrityunjay-mantra-meaning-in-hindi/) यहाँ पढ़ें।
 
 ### उपाय 2: नाग गायत्री मंत्र
 
@@ -90,7 +90,7 @@ draft: false
 
 **लाभ:** सोमवार शिव का दिन है। शिव "कालों के काल" हैं — कालसर्प दोष का सीधा समाधान शिव से जुड़ा है। श्रावण मास (जुलाई-अगस्त) में विशेष फलदायी।
 
-विस्तार से [सावन में रुद्राभिषेक का महत्व](https://kaalsarpdoshpujaujjain.com/blog/rudrabhishek-in-sawan-month/) यहाँ पढ़ें।
+विस्तार से [सावन में रुद्राभिषेक का महत्व](https://kaalsarpdoshpujaujjain.com/rudrabhishek-in-sawan-month/) यहाँ पढ़ें।
 
 ### उपाय 5: 11 सोमवार का व्रत
 
@@ -123,7 +123,7 @@ draft: false
 
 **लाभ:** रुद्र शिव का उग्र रूप है — राहु-केतु जैसे उग्र ग्रहों का संतुलन।
 
-[रुद्राभिषेक के प्रकार](https://kaalsarpdoshpujaujjain.com/blog/rudrabhishek-kitne-prakar-ke-hote-hai/) यहाँ पढ़ें।
+[रुद्राभिषेक के प्रकार](https://kaalsarpdoshpujaujjain.com/rudrabhishek-kitne-prakar-ke-hote-hai/) यहाँ पढ़ें।
 
 ### उपाय 9: रत्न धारण — गोमेद और लहसुनिया
 
@@ -182,7 +182,7 @@ draft: false
 
 **लाभ:** काल भैरव शिव के उग्र रूप, "क्षेत्रपाल"। उज्जैन में काल भैरव मंदिर विश्व-प्रसिद्ध है।
 
-[काल भैरव अष्टकम](https://kaalsarpdoshpujaujjain.com/blog/kaal-bhairav-ashtakam/) यहाँ पढ़ें।
+[काल भैरव अष्टकम](https://kaalsarpdoshpujaujjain.com/kaal-bhairav-ashtakam/) यहाँ पढ़ें।
 
 ## कालसर्प दोष निवारण पूजा — उज्जैन में
 
@@ -211,7 +211,7 @@ draft: false
 
 **4. 15+ वर्ष अनुभवी पंडित परंपरा** — पूर्ण शास्त्र-सम्मत विधि का जीवित रूप।
 
-विस्तार से [कालसर्प पूजा कहाँ होती है](https://kaalsarpdoshpujaujjain.com/blog/kaal-sarp-dosh-ki-puja-kaha-hoti-hai/) यहाँ पढ़ें।
+विस्तार से [कालसर्प पूजा कहाँ होती है](https://kaalsarpdoshpujaujjain.com/kaal-sarp-dosh-ki-puja-kaha-hoti-hai/) यहाँ पढ़ें।
 
 ### उज्जैन में कालसर्प पूजा कैसे करवाएँ?
 
@@ -296,12 +296,12 @@ USA, UK, Canada, Australia, Singapore — विदेश में बसे �
 
 ## संबंधित पठन
 
-- [काल सर्प दोष क्या है — पूरी जानकारी](https://kaalsarpdoshpujaujjain.com/blog/kaal-sarp-dosh-kya-hai/)
-- [काल सर्प दोष पूजा कहाँ होती है](https://kaalsarpdoshpujaujjain.com/blog/kaal-sarp-dosh-ki-puja-kaha-hoti-hai/)
-- [काल सर्प दोष के नुकसान](https://kaalsarpdoshpujaujjain.com/blog/kaal-sarp-dosh-ke-nuksaan-kya-hai/)
-- [कौन-सा काल सर्प दोष सबसे खतरनाक](https://kaalsarpdoshpujaujjain.com/blog/which-kaal-sarp-dosh-is-most-dangerous/)
-- [काल सर्प दोष निवारण मंत्र](https://kaalsarpdoshpujaujjain.com/blog/kaalsarp-dosh-nivaran-mantra/)
-- [महामृत्युंजय जाप का खर्च](https://kaalsarpdoshpujaujjain.com/blog/mahamrityunjay-jaap-me-kitna-kharch-aata-hai/)
+- [काल सर्प दोष क्या है — पूरी जानकारी](https://kaalsarpdoshpujaujjain.com/kaal-sarp-dosh-kya-hai/)
+- [काल सर्प दोष पूजा कहाँ होती है](https://kaalsarpdoshpujaujjain.com/kaal-sarp-dosh-ki-puja-kaha-hoti-hai/)
+- [काल सर्प दोष के नुकसान](https://kaalsarpdoshpujaujjain.com/kaal-sarp-dosh-ke-nuksaan-kya-hai/)
+- [कौन-सा काल सर्प दोष सबसे खतरनाक](https://kaalsarpdoshpujaujjain.com/which-kaal-sarp-dosh-is-most-dangerous/)
+- [काल सर्प दोष निवारण मंत्र](https://kaalsarpdoshpujaujjain.com/kaalsarp-dosh-nivaran-mantra/)
+- [महामृत्युंजय जाप का खर्च](https://kaalsarpdoshpujaujjain.com/mahamrityunjay-jaap-me-kitna-kharch-aata-hai/)
 
 ## संपर्क — पूजा बुकिंग
 
